@@ -1,0 +1,10 @@
+.menu-button {
+    -fx-background-color: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-transition: 0.2s;
+}
+
+.menu-button:hover {
+    -fx-background-color: #E2EDF8;
+    -fx-text-fill: #183b60;
+}
