@@ -79,6 +79,7 @@ public class DashboardController {
         carregarTudo();
     }
 
+
     private void carregarTudo() {
         UserSession sessao = UserSession.getInstance();
         String perfil = sessao != null ? sessao.getPerfil() : "RECEPCAO";
@@ -168,7 +169,6 @@ public class DashboardController {
             if (ocups != null) ocups.setText("75%");
             if (ocupa != null) ocupa.setText("+5% face à semana anterior");
         } catch (Exception e) {
-            // Apenas placeholders visuais
         }
     }
 

@@ -84,7 +84,17 @@ public class PaginaPrincipalController {
 
     @FXML
     private void abrirMedicos() {
-        carregarTela("Medicos.fxml", "Médicos");
+        carregarTela("Medicos.fxml", "Medicos");
+    }
+
+    @FXML
+    private void abrirAgenda() {
+        carregarTela("Agenda.fxml", "Agenda");
+    }
+
+    @FXML
+    private void abrirProntuario() {
+       carregarTela("Prontuario.fxml", "Prontuario");
     }
 
     @FXML

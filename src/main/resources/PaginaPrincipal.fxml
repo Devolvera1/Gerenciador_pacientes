@@ -68,7 +68,7 @@
                      </graphic>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Médicos" textFill="#233449">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirMedicos" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Médicos" textFill="#233449">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -81,7 +81,7 @@
                      </graphic>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Agenda" textFill="#233449">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirAgenda" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Agenda" textFill="#233449">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -94,7 +94,7 @@
                      </graphic>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Prontuários" textFill="#233449">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirProntuario" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Prontuários" textFill="#233449">
                      <font>
                         <Font size="14.0" />
                      </font>
