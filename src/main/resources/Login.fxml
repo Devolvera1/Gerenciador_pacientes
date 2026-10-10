@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="703.0" prefWidth="864.0" style="-fx-background-color: #F7F9FC;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.LoginController">
+<StackPane prefHeight="703.0" prefWidth="864.0" style="-fx-background-color: #F7F9FC;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Login.LoginController">
     <children>
 
         <AnchorPane fx:id="loginCard" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="612.0" prefWidth="440.0" style="-fx-background-color: #FFFFFF; -fx-border-radius: 3px; -fx-background-radius: 10px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 0);">

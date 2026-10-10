@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="703.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.PaginaPrincipalController">
+<AnchorPane prefHeight="703.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController">
    <children>
       <AnchorPane prefHeight="703.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -120,7 +120,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Terminar sessão" textFill="#233449">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#sair" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Terminar sessão" textFill="#233449">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -147,8 +147,8 @@
          <children>
             <Text fx:id="lblPage" fill="#6d7c8e" layoutX="28.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de trabalho  /  Dashboard" />
             <Text fx:id="lblData" fill="#6d7c8e" layoutX="770.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex., 9 outubro 2026" />
-            <Text fill="#233449" layoutX="1009.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="124.0751953125" />
-            <Text fill="#6d7c8e" layoutX="1009.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Médica · Administradora" wrappingWidth="124.0751953125">
+            <Text fx:id="lblMedico" fill="#233449" layoutX="1009.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="124.0751953125" />
+            <Text fx:id="lblPerfil" fill="#6d7c8e" layoutX="1009.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Médica · Administradora" wrappingWidth="124.0751953125">
                <font>
                   <Font size="10.0" />
                </font>

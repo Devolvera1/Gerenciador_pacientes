@@ -1,5 +1,6 @@
-package com.example.sistema_gestao_pacientes;
+package com.example.sistema_gestao_pacientes.Login;
 
+import com.example.sistema_gestao_pacientes.Config.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

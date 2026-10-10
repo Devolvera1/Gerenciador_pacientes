@@ -11,3 +11,44 @@
 .meunu-Bar {
     -fx-accent: #225F9E;
 }
+
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-selection-bar: transparent;
+    -fx-selection-bar-non-focused: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #F8FAFC;
+    -fx-border-width: 0;
+    -fx-size: 45px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #64748B;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #F1F5F9 transparent;
+    -fx-border-width: 1px;
+    -fx-cell-size: 55px;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #F8FAFC;
+}
+
+.table-view .table-cell {
+    -fx-border-width: 0;
+    -fx-alignment: center-left;
+    -fx-font-size: 13px;
+    -fx-text-fill: #334155;
+}

@@ -1,24 +1,24 @@
-package com.example.sistema_gestao_pacientes;
+package com.example.sistema_gestao_pacientes.Pagina_principal;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.image.Image;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class LoginApplication extends Application {
+public class PaginaPrincipal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/PaginaPrincipal.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Sistema de Gestão de Pacientes - Login");
+        primaryStage.setTitle("Sistema de Gestão de Pacientes - Pagina Principal");
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/heal.jpg")));
         primaryStage.show();
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/heal.jpg")));
         primaryStage.setMaximized(true);
     }
 
