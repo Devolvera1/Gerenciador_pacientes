@@ -16,16 +16,17 @@ import java.util.Locale;
 public class PaginaPrincipalController {
 
     @FXML private Text lblData;
-
+    @FXML private Text lblPage;
 
 
     @FXML private AnchorPane conteudoCentral;
 
     @FXML
     public void initialize() {
-        carregarTela("Dashboard.fxml");
+        carregarTela("Dashboard.fxml", "Dashboard");
         lblData.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("E, d MMMM yyyy", new Locale("pt", "BR"))));
     }
+
 
 
     @FXML
@@ -40,7 +41,7 @@ public class PaginaPrincipalController {
         btn.setStyle("-fx-background-color: #FFFFFF;");
     }
 
-    private void carregarTela(String fxmlFileName) {
+    private void carregarTela(String fxmlFileName, String nomePagina) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlFileName));
             Parent novaTela = loader.load();
@@ -52,24 +53,29 @@ public class PaginaPrincipalController {
 
             conteudoCentral.getChildren().clear();
             conteudoCentral.getChildren().add(novaTela);
+
+            lblPage.setText("Área de trabalho  /  " + nomePagina);
+
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Não foi possível carregar a tela: " + fxmlFileName);
         }
     }
 
+
     @FXML
     private void abrirDashboard() {
-        carregarTela("Dashboard.fxml");
+        carregarTela("Dashboard.fxml", "Dashboard");
     }
+
 
     @FXML
     private void abrirPacientes() {
-        carregarTela("Pacientes.fxml");
+        carregarTela("Pacientes.fxml", "Pacientes");
     }
 
     @FXML
     private void abrirMedicos() {
-        carregarTela("Medicos.fxml");
+        carregarTela("Medicos.fxml", "Medicos");
     }
 }

@@ -26,7 +26,11 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="979.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="+ Nova consulta" textFill="WHITE" />
+      <Button layoutX="979.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="+ Nova consulta" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
       <HBox layoutX="13.0" layoutY="66.0" prefHeight="113.0" prefWidth="1114.0" spacing="5.0">
          <children>
             <AnchorPane prefHeight="113.0" prefWidth="275.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
