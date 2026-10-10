@@ -146,7 +146,7 @@
       <AnchorPane layoutX="224.0" prefHeight="66.0" prefWidth="1148.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Text fill="#6d7c8e" layoutX="28.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de trabalho  /  Dashboard" />
-            <Text fill="#6d7c8e" layoutX="770.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex., 9 outubro 2026" />
+            <Text fx:id="lblData" fill="#6d7c8e" layoutX="770.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex., 9 outubro 2026" />
             <Text fill="#233449" layoutX="1009.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="124.0751953125" />
             <Text fill="#6d7c8e" layoutX="1009.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Médica · Administradora" wrappingWidth="124.0751953125">
                <font>
