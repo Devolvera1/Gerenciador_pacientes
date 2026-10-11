@@ -1,6 +1,8 @@
 package com.example.sistema_gestao_pacientes.Pagina_principal;
 
 import com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController;
+import com.example.sistema_gestao_pacientes.NovaConsulta.NovaConsultaController;
+import com.example.sistema_gestao_pacientes.Util.PacienteSession;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,11 +48,8 @@ public class PaginaPrincipalController {
             lblPerfil.setText("---");
             lblMedico.setText("Nenhum usuário logado");
         }
-        conteudoCentral.sceneProperty().addListener((obs, oldScene, newScene) -> {
-            if (newScene != null) {
-                newScene.setUserData(this);
-            }
-        });
+
+        // Listener único para injetar o controller na cena
         conteudoCentral.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.setUserData(this);
@@ -58,6 +57,43 @@ public class PaginaPrincipalController {
         });
 
         carregarTela("Dashboard.fxml", "Dashboard");
+    }
+
+    // Método corrigido para receber o PacienteSession
+    public void abrirNovaConsulta() {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource("/com/example/sistema_gestao_pacientes/NovaConsulta/NovaConsulta.fxml");
+
+            if (fxmlUrl == null) {
+                fxmlUrl = getClass().getResource("/NovaConsulta.fxml"); // Corrigido o typo de "NovaConulta"
+            }
+
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo NovaConsulta.fxml não foi encontrado nos recursos.");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            Parent newtela = loader.load();
+
+            NovaConsultaController controller = loader.getController();
+            if (controller != null) {
+                // Caso seu NovaConsultaController tenha um método para receber a sessão do paciente, chame-o aqui:
+                // controller.initPaciente(paciente);
+            }
+
+            AnchorPane.setTopAnchor(newtela, 0.0);
+            AnchorPane.setBottomAnchor(newtela, 0.0);
+            AnchorPane.setLeftAnchor(newtela, 0.0);
+            AnchorPane.setRightAnchor(newtela, 0.0);
+
+            conteudoCentral.getChildren().clear();
+            conteudoCentral.getChildren().add(newtela);
+            lblPage.setText("Área de trabalho  /  Nova consulta");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERRO GRAVE: Não foi possível carregar a tela de nova consulta.");
+        }
     }
 
 
@@ -154,6 +190,8 @@ public class PaginaPrincipalController {
             System.err.println("ERRO GRAVE: Não foi possível carregar a tela de edição.");
         }
     }
+
+
 
 
     @FXML

@@ -1,7 +1,9 @@
 package com.example.sistema_gestao_pacientes.Dashboard;
 
 import com.example.sistema_gestao_pacientes.Config.DatabaseConnection;
+import com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController;
 import com.example.sistema_gestao_pacientes.Util.ConsultaSession;
+import com.example.sistema_gestao_pacientes.Util.PacienteSession;
 import com.example.sistema_gestao_pacientes.Util.ProximaConsulta;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import javafx.collections.FXCollections;
@@ -9,11 +11,8 @@ import javafx.fxml.FXML;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
@@ -23,30 +22,55 @@ public class DashboardController {
 
     private static final Logger LOGGER = Logger.getLogger(DatabaseConnection.class.getName());
 
-    @FXML private TableView<ConsultaSession> table;
-    @FXML private TableColumn<ConsultaSession, String> colHora;
-    @FXML private TableColumn<ConsultaSession, String> colPaciente;
-    @FXML private TableColumn<ConsultaSession, String> colMedico;
-    @FXML private TableColumn<ConsultaSession, String> colTipo;
-    @FXML private TableColumn<ConsultaSession, String> colEstado;
+    @FXML
+    private TableView<ConsultaSession> table;
+    @FXML
+    private TableColumn<ConsultaSession, String> colHora;
+    @FXML
+    private TableColumn<ConsultaSession, String> colPaciente;
+    @FXML
+    private TableColumn<ConsultaSession, String> colMedico;
+    @FXML
+    private TableColumn<ConsultaSession, String> colTipo;
+    @FXML
+    private TableColumn<ConsultaSession, String> colEstado;
 
-    @FXML private Text Total;
-    @FXML private Text confcan;
-    @FXML private Text totalpacientes;
-    @FXML private Text newpaciente;
-    @FXML private Text totalmedico;
-    @FXML private Text ocups;
-    @FXML private Text ocupa;
+    @FXML
+    private Text Total;
+    @FXML
+    private Text confcan;
+    @FXML
+    private Text totalpacientes;
+    @FXML
+    private Text newpaciente;
+    @FXML
+    private Text totalmedico;
+    @FXML
+    private Text ocups;
+    @FXML
+    private Text ocupa;
 
-    @FXML private Text lblHora;
-    @FXML private Text lblNomePaciente;
-    @FXML private Text lblEspecialidade;
-    @FXML private Text lblNomeDoutor;
-    @FXML private Text lblSala;
-    @FXML private Text lblAlergia;
-    @FXML private Text lblInfosPaciente;
-    @FXML private Text bemvindo;
-    @FXML private Button btnProntuario;
+    @FXML
+    private Button BtnNovaConsulta;
+
+    @FXML
+    private Text lblHora;
+    @FXML
+    private Text lblNomePaciente;
+    @FXML
+    private Text lblEspecialidade;
+    @FXML
+    private Text lblNomeDoutor;
+    @FXML
+    private Text lblSala;
+    @FXML
+    private Text lblAlergia;
+    @FXML
+    private Text lblInfosPaciente;
+    @FXML
+    private Text bemvindo;
+    @FXML
+    private Button btnProntuario;
 
     private final DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -62,7 +86,9 @@ public class DashboardController {
         colPaciente.setCellFactory(column -> aplicarTextoNegrito());
         colTipo.setCellFactory(column -> aplicarTextoCinza());
         colEstado.setCellFactory(column -> aplicarBadgeStatus());
-
+        BtnNovaConsulta.setOnAction(event -> {
+            NovaConsulta();
+        });
         table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 atualizarPainelASeguir(
@@ -78,7 +104,6 @@ public class DashboardController {
         });
         carregarTudo();
     }
-
 
     private void carregarTudo() {
         UserSession sessao = UserSession.getInstance();
@@ -170,7 +195,26 @@ public class DashboardController {
             if (ocupa != null) ocupa.setText("+5% face à semana anterior");
         } catch (Exception e) {
         }
+
     }
+
+    private void NovaConsulta() {
+        try {
+            PaginaPrincipalController principalController = (PaginaPrincipalController) table.getScene().getUserData();
+
+            if (principalController != null) {
+                principalController.abrirNovaConsulta();
+            } else {
+                System.err.println("Erro: PaginaPrincipalController não encontrado na cena.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Não foi possível carregar a tela de edição.", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
 
     private TableCell<ConsultaSession, String> aplicarTextoNegrito() {
         return new TableCell<>() {

@@ -11,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController">
+<AnchorPane prefHeight="650.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="618.0" prefWidth="1144.0" style="-fx-background-color: #F3F5F8;" styleClass="\\\@style.css" stylesheets="@style.css">
          <children>
@@ -212,88 +211,92 @@
                      </children>
                   </AnchorPane>
                   <Line endX="724.0" layoutX="113.0" layoutY="365.0" startX="-116.0" stroke="#e6ebf1" />
+                  <AnchorPane layoutX="840.0" layoutY="9.0" prefHeight="559.0" prefWidth="256.0">
+                     <children>
+                        <AnchorPane layoutX="4.0" layoutY="303.0" prefHeight="186.0" prefWidth="248.0" style="-fx-background-color: EAF2FB; -fx-background-radius: 10; -fx-border-color: #E6EBF1;">
+                           <children>
+                              <VBox layoutX="14.0" layoutY="15.0" prefHeight="157.0" prefWidth="220.0" spacing="30.0">
+                                 <children>
+                                    <Text fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="Antes de guardar" textAlignment="CENTER" wrappingWidth="219.7490234375">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Verifique os dados com a paciente. As alterações só serão aplicadas ao selecionar Guardar alterações." wrappingWidth="219.552734375">
+                                       <font>
+                                          <Font name="Arial" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancelar mantém os dados atuais e regressa à listagem." wrappingWidth="195.439453125">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="4.0" layoutY="14.0" prefHeight="264.0" prefWidth="248.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #E6EBF1;">
+                           <children>
+                              <VBox layoutX="11.0" layoutY="12.0" prefHeight="241.0" prefWidth="227.0" spacing="10.0">
+                                 <children>
+                                    <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Registo da paciente">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtPaciente" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtIdentificador" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="P-01024">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Identificador do paciente">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atribuído pelo sistema. Não editável.">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtIdentificador2" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="P-01024">
+                                       <font>
+                                          <Font name="Arial" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Última consulta">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualizada a partir do histórico clínico.">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="txtDatadecadastro" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="09/10/2026">
+                                       <font>
+                                          <Font name="Arial" size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
             <HBox alignment="CENTER_LEFT" spacing="8.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" />
-            <AnchorPane layoutX="852.0" layoutY="53.0" prefHeight="264.0" prefWidth="248.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-color: #E6EBF1;">
-               <children>
-                  <VBox layoutX="6.0" layoutY="13.0" prefHeight="241.0" prefWidth="227.0" spacing="10.0">
-                     <children>
-                        <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Registo da paciente">
-                           <font>
-                              <Font name="Arial Black" size="14.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtPaciente" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente">
-                           <font>
-                              <Font name="Arial Black" size="14.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtIdentificador" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="P-01024">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Identificador do paciente">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atribuído pelo sistema. Não editável.">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtIdentificador2" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="P-01024">
-                           <font>
-                              <Font name="Arial" size="13.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Última consulta">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualizada a partir do histórico clínico.">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txtDatadecadastro" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="09/10/2026">
-                           <font>
-                              <Font name="Arial" size="13.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="852.0" layoutY="333.0" prefHeight="186.0" prefWidth="248.0" style="-fx-background-color: EAF2FB; -fx-background-radius: 10; -fx-border-color: #E6EBF1;">
-               <children>
-                  <VBox layoutX="14.0" layoutY="14.0" prefHeight="157.0" prefWidth="220.0" spacing="30.0">
-                     <children>
-                        <Text fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="Antes de guardar" textAlignment="CENTER" wrappingWidth="219.7490234375">
-                           <font>
-                              <Font name="Arial Black" size="13.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Text>
-                        <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Verifique os dados com a paciente. As alterações só serão aplicadas ao selecionar Guardar alterações." wrappingWidth="219.552734375">
-                           <font>
-                              <Font name="Arial" size="13.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancelar mantém os dados atuais e regressa à listagem." wrappingWidth="195.439453125">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

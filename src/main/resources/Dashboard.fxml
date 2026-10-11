@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="715.0" prefWidth="1141.0" style="-fx-background-color: #F3F5F8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Dashboard.DashboardController">
+<AnchorPane prefHeight="715.0" prefWidth="1141.0" style="-fx-background-color: #F3F5F8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Dashboard.DashboardController">
    <children>
 
       <AnchorPane prefHeight="45.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
@@ -31,7 +31,7 @@
                   </Text>
                </children>
             </VBox>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="+ Nova consulta" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="BtnNovaConsulta" mnemonicParsing="false" prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="+ Nova consulta" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
