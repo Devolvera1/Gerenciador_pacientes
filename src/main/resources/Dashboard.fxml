@@ -108,7 +108,7 @@
                </children>
             </AnchorPane>
 
-            <TableView fx:id="table" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="58.0">
+            <TableView fx:id="table" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" styleClass="\@style.css" stylesheets="@style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="58.0">
                <columns>
                   <TableColumn fx:id="colHora" prefWidth="75.0" style="-fx-background-color: #F8FAFC;" text="Hora" />
                   <TableColumn fx:id="colPaciente" prefWidth="120.0" style="-fx-background-color: #F8FAFC;" text="Paciente" />

@@ -1,16 +1,13 @@
 package com.example.sistema_gestao_pacientes.Config;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.example.sistema_gestao_pacientes.Util.ConsultaSession;
+import com.example.sistema_gestao_pacientes.Util.PacienteSession;
 import com.example.sistema_gestao_pacientes.Util.ProximaConsulta;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import org.mindrot.jbcrypt.BCrypt;
@@ -200,7 +197,6 @@ public class DatabaseConnection {
     }
 
     public int contarNovosPacientesMes() {
-        // Corrigido para usar 'data_cadastro' conforme o seu script SQL
         String query = "SELECT COUNT(*) AS total FROM pacientes WHERE MONTH(data_cadastro) = MONTH(CURRENT_DATE) AND YEAR(data_cadastro) = YEAR(CURRENT_DATE)";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
@@ -222,5 +218,38 @@ public class DatabaseConnection {
             LOGGER.log(Level.SEVERE, "Erro ao contar total de médicos", e);
         }
         return 0;
+    }
+
+    public List<PacienteSession> listarPacientesDoBanco() {
+        List<PacienteSession> lista = new ArrayList<>();
+
+        String sql = "SELECT p.nome, p.telefone, p.numero_utente, " +
+                "(SELECT MAX(c.data_consulta) FROM consultas c WHERE c.paciente_id = p.id) AS ultima_consulta " +
+                "FROM pacientes p";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                String contato = rs.getString("telefone");
+                String utente = rs.getString("numero_utente");
+                String ultimaConsulta = rs.getString("ultima_consulta");
+
+                if (ultimaConsulta == null || ultimaConsulta.isEmpty()) {
+                    ultimaConsulta = "Sem consultas";
+                }
+
+                String acoes = "Editar / Apagar";
+
+                lista.add(new PacienteSession(nome, contato, utente, ultimaConsulta, acoes));
+            }
+
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Erro ao listar pacientes do banco", e);
+        }
+
+        return lista;
     }
 }
