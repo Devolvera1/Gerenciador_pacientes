@@ -223,7 +223,7 @@ public class DatabaseConnection {
     public List<PacienteSession> listarPacientesDoBanco() {
         List<PacienteSession> lista = new ArrayList<>();
 
-        String sql = "SELECT p.nome, p.telefone, p.numero_utente, " +
+        String sql = "SELECT p.id, p.nome, p.telefone, p.numero_utente, " +
                 "(SELECT MAX(c.data_consulta) FROM consultas c WHERE c.paciente_id = p.id) AS ultima_consulta " +
                 "FROM pacientes p";
 
@@ -232,6 +232,7 @@ public class DatabaseConnection {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
+                int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String contato = rs.getString("telefone");
                 String utente = rs.getString("numero_utente");
@@ -241,15 +242,54 @@ public class DatabaseConnection {
                     ultimaConsulta = "Sem consultas";
                 }
 
-                String acoes = "Editar / Apagar";
-
-                lista.add(new PacienteSession(nome, contato, utente, ultimaConsulta, acoes));
+                lista.add(new PacienteSession(id, nome, contato, utente, ultimaConsulta));
             }
 
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Erro ao listar pacientes do banco", e);
+            e.printStackTrace();
         }
 
         return lista;
+    }
+
+    public boolean apagarPacienteDoBanco(int pacienteId) {
+        String sqlProntuarios = "DELETE FROM prontuarios WHERE consulta_id IN (SELECT id FROM consultas WHERE paciente_id = ?)";
+        String sqlConsultas = "DELETE FROM consultas WHERE paciente_id = ?";
+        String sqlPaciente = "DELETE FROM pacientes WHERE id = ?";
+
+        Connection conn = null;
+        try {
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement pstmt1 = conn.prepareStatement(sqlProntuarios)) {
+                pstmt1.setInt(1, pacienteId);
+                pstmt1.executeUpdate();
+            }
+
+            try (PreparedStatement pstmt2 = conn.prepareStatement(sqlConsultas)) {
+                pstmt2.setInt(1, pacienteId);
+                pstmt2.executeUpdate();
+            }
+
+            boolean sucesso;
+            try (PreparedStatement pstmt3 = conn.prepareStatement(sqlPaciente)) {
+                pstmt3.setInt(1, pacienteId);
+                sucesso = pstmt3.executeUpdate() > 0;
+            }
+
+            conn.commit();
+            return sucesso;
+        } catch (SQLException e) {
+            if (conn != null) {
+                try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (conn != null) {
+                try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+            }
+        }
     }
 }

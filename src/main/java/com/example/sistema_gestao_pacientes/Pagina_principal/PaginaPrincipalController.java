@@ -1,5 +1,6 @@
 package com.example.sistema_gestao_pacientes.Pagina_principal;
 
+import com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,16 @@ public class PaginaPrincipalController {
             lblPerfil.setText("---");
             lblMedico.setText("Nenhum usuário logado");
         }
+        conteudoCentral.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.setUserData(this);
+            }
+        });
+        conteudoCentral.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.setUserData(this);
+            }
+        });
 
         carregarTela("Dashboard.fxml", "Dashboard");
     }
@@ -107,6 +118,41 @@ public class PaginaPrincipalController {
     private void onMouseExited(MouseEvent event) {
         Button btn = (Button) event.getSource();
         btn.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void abrirTelaEditarPaciente(int pacienteId) {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource("/com/example/sistema_gestao_pacientes/EditarPaciente/EditarPaciente.fxml");
+
+            if (fxmlUrl == null) {
+                fxmlUrl = getClass().getResource("/EditarPaciente.fxml");
+            }
+
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo EditarPaciente.fxml não foi encontrado nos recursos.");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            Parent novaTela = loader.load();
+
+            EditarPacienteController controller = loader.getController();
+            if (controller != null) {
+                controller.setPacienteId(pacienteId);
+            }
+
+            AnchorPane.setTopAnchor(novaTela, 0.0);
+            AnchorPane.setBottomAnchor(novaTela, 0.0);
+            AnchorPane.setLeftAnchor(novaTela, 0.0);
+            AnchorPane.setRightAnchor(novaTela, 0.0);
+
+            conteudoCentral.getChildren().clear();
+            conteudoCentral.getChildren().add(novaTela);
+            lblPage.setText("Área de trabalho  /  Pacientes  /  Editar paciente");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERRO GRAVE: Não foi possível carregar a tela de edição.");
+        }
     }
 
     @FXML
