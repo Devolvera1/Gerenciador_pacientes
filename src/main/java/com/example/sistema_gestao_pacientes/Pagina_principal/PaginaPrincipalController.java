@@ -155,6 +155,7 @@ public class PaginaPrincipalController {
         }
     }
 
+
     @FXML
     private void sair(ActionEvent event) {
         try {
