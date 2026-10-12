@@ -375,25 +375,21 @@ public class DatabaseConnection {
             conn = getConnection();
             conn.setAutoCommit(false);
 
-            // 1. Apaga prontuários das consultas do médico
             try (PreparedStatement pstmt1 = conn.prepareStatement(sqlProntuarios)) {
                 pstmt1.setInt(1, medicoId);
                 pstmt1.executeUpdate();
             }
 
-            // 2. Apaga consultas associadas ao médico
             try (PreparedStatement pstmt2 = conn.prepareStatement(sqlConsultas)) {
                 pstmt2.setInt(1, medicoId);
                 pstmt2.executeUpdate();
             }
 
-            // 3. Desvincula o usuário do médico (se houver)
             try (PreparedStatement pstmt3 = conn.prepareStatement(sqlUsuarios)) {
                 pstmt3.setInt(1, medicoId);
                 pstmt3.executeUpdate();
             }
 
-            // 4. Apaga o médico
             boolean sucesso;
             try (PreparedStatement pstmt4 = conn.prepareStatement(sqlMedico)) {
                 pstmt4.setInt(1, medicoId);

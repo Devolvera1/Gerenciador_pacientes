@@ -9,10 +9,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MedicosController {
+
+    private static final Logger LOGGER = Logger.getLogger(MedicosController.class.getName());
 
     @FXML
     private TableView<MedicoSession> table;
@@ -31,11 +39,20 @@ public class MedicosController {
 
     @FXML private TextField Pesquisa;
     @FXML private ComboBox<String> ComboMedicos;
+    @FXML private Button BtnAnterior;
+    @FXML private Button BtnSeguinte;
+    @FXML private Button BtnExportar;
+
+    @FXML private Text QtdRegistros;
+    @FXML private Text TextNumList;
+    @FXML private Text TxtQtdList;
+    @FXML private Text TxtNumMedicos;
 
     private final ObservableList<MedicoSession> listaCompleta = FXCollections.observableArrayList();
     private final ObservableList<MedicoSession> listaFiltrada = FXCollections.observableArrayList();
 
     private int paginaAtual = 1;
+    private final int itensPorPagina = 10;
 
     @FXML
     public void initialize() {
@@ -45,11 +62,14 @@ public class MedicosController {
         colGabinete.setCellValueFactory(new PropertyValueFactory<>("gabinete"));
         colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
-        table.setItems(listaFiltrada);
-
         if (Pesquisa != null) {
             Pesquisa.textProperty().addListener((observable, oldValue, newValue) -> filtrarEAtualizar());
         }
+
+        if (BtnAnterior != null) BtnAnterior.setOnAction(event -> paginaAnterior());
+        if (BtnSeguinte != null) BtnSeguinte.setOnAction(event -> paginaSeguinte());
+        if (BtnExportar != null) BtnExportar.setOnAction(event -> exportarParaXml());
+
 
         if (ComboMedicos != null) {
             ComboMedicos.valueProperty().addListener((observable, oldValue, newValue) -> filtrarEAtualizar());
@@ -87,6 +107,7 @@ public class MedicosController {
         });
 
         carregarDadosDoBanco();
+
     }
 
     private void carregarDadosDoBanco() {
@@ -99,6 +120,14 @@ public class MedicosController {
 
             popularComboEspecialidades();
             filtrarEAtualizar();
+            atualizarContadorTotalMedicos();
+        }
+    }
+
+    private void atualizarContadorTotalMedicos() {
+        if (TxtNumMedicos != null) {
+            int total = listaCompleta.size();
+            TxtNumMedicos.setText(total + " Médicos");
         }
     }
 
@@ -142,6 +171,53 @@ public class MedicosController {
         }
 
         paginaAtual = 1;
+        atualizarTabelaPaginada();
+    }
+
+    private void atualizarTabelaPaginada() {
+        int totalRegistros = listaFiltrada.size();
+        int totalPaginas = Math.max(1, (int) Math.ceil((double) totalRegistros / itensPorPagina));
+
+        if (paginaAtual > totalPaginas) {
+            paginaAtual = totalPaginas;
+        }
+
+        int indiceInicial = (paginaAtual - 1) * itensPorPagina;
+        int indiceFinal = Math.min(indiceInicial + itensPorPagina, totalRegistros);
+
+        ObservableList<MedicoSession> paginaAtualLista = FXCollections.observableArrayList();
+        if (totalRegistros > 0 && indiceInicial < totalRegistros) {
+            paginaAtualLista.addAll(listaFiltrada.subList(indiceInicial, indiceFinal));
+        }
+
+        table.setItems(paginaAtualLista);
+
+        int exibidoInicio = totalRegistros == 0 ? 0 : indiceInicial + 1;
+
+        if (QtdRegistros != null) {
+            QtdRegistros.setText("A mostrar " + exibidoInicio + "–" + indiceFinal + " de " + totalRegistros + " registos");
+        }
+        if (TextNumList != null) {
+            TextNumList.setText(String.valueOf(paginaAtual));
+        }
+        if (TxtQtdList != null) {
+            TxtQtdList.setText("de " + totalPaginas);
+        }
+    }
+
+    private void paginaAnterior() {
+        if (paginaAtual > 1) {
+            paginaAtual--;
+            atualizarTabelaPaginada();
+        }
+    }
+
+    private void paginaSeguinte() {
+        int totalPaginas = Math.max(1, (int) Math.ceil((double) listaFiltrada.size() / itensPorPagina));
+        if (paginaAtual < totalPaginas) {
+            paginaAtual++;
+            atualizarTabelaPaginada();
+        }
     }
 
     private void editarMedico(MedicoSession medico) {
@@ -173,6 +249,7 @@ public class MedicosController {
             if (sucesso) {
                 listaCompleta.remove(medico);
                 filtrarEAtualizar();
+                atualizarContadorTotalMedicos();
 
                 Alert info = new Alert(Alert.AlertType.INFORMATION, "Médico apagado com sucesso!", ButtonType.OK);
                 info.showAndWait();
@@ -183,6 +260,48 @@ public class MedicosController {
         }
     }
 
-    private void Totalmedicos() {
+    private void exportarParaXml() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar Médicos para XML");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Arquivos XML (*.xml)", "*.xml"));
+
+        File arquivo = fileChooser.showSaveDialog(table.getScene().getWindow());
+
+        if (arquivo != null) {
+            try (PrintWriter writer = new PrintWriter(arquivo, "UTF-8")) {
+                writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                writer.println("<medicos>");
+
+                for (MedicoSession m : listaFiltrada) {
+                    writer.println("    <medico>");
+                    writer.println("        <nome>" + escapeXml(m.getNome()) + "</nome>");
+                    writer.println("        <especialidade>" + escapeXml(m.getEspecialidade()) + "</especialidade>");
+                    writer.println("        <crm>" + escapeXml(m.getCrm()) + "</crm>");
+                    writer.println("        <gabinete>" + escapeXml(m.getGabinete()) + "</gabinete>");
+                    writer.println("        <estado>" + escapeXml(m.getEstado()) + "</estado>");
+                    writer.println("    </medico>");
+                }
+
+                writer.println("</medicos>");
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText(null);
+                alert.setContentText("Dados exportados com sucesso para XML!");
+                alert.showAndWait();
+
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Erro ao gerar arquivo XML", e);
+            }
+        }
+    }
+
+    private String escapeXml(String texto) {
+        if (texto == null) return "";
+        return texto.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&apos;");
     }
 }
