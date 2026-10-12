@@ -1,8 +1,8 @@
 package com.example.sistema_gestao_pacientes.Pagina_principal;
 
+import com.example.sistema_gestao_pacientes.EditarMedico.EditarMedicoController;
 import com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController;
 import com.example.sistema_gestao_pacientes.NovaConsulta.NovaConsultaController;
-import com.example.sistema_gestao_pacientes.Util.PacienteSession;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -181,6 +181,41 @@ public class PaginaPrincipalController {
             conteudoCentral.getChildren().clear();
             conteudoCentral.getChildren().add(novaTela);
             lblPage.setText("Área de trabalho  /  Pacientes  /  Editar paciente");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERRO GRAVE: Não foi possível carregar a tela de edição.");
+        }
+    }
+
+    public void abrirTelaEditarMedico(int medicoId) {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource("/EditarMedico.fxml");
+
+            if (fxmlUrl == null) {
+                fxmlUrl = getClass().getResource("/EditarMedico.fxml");
+            }
+
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo EditarMedico.fxml não foi encontrado nos recursos.");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            Parent novaTela = loader.load();
+
+            EditarMedicoController controller = loader.getController();
+            if (controller != null) {
+                controller.setMedicoId(medicoId);
+            }
+
+            AnchorPane.setTopAnchor(novaTela, 0.0);
+            AnchorPane.setBottomAnchor(novaTela, 0.0);
+            AnchorPane.setLeftAnchor(novaTela, 0.0);
+            AnchorPane.setRightAnchor(novaTela, 0.0);
+
+            conteudoCentral.getChildren().clear();
+            conteudoCentral.getChildren().add(novaTela);
+            lblPage.setText("Área de trabalho  /  Medico  /  Editar medico");
 
         } catch (IOException e) {
             e.printStackTrace();

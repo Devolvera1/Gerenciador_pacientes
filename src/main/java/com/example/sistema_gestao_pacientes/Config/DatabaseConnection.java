@@ -322,4 +322,97 @@ public class DatabaseConnection {
         }
         return lista;
     }
+
+    /**
+     * Retorna a lista de médicos cadastrados no banco de dados.
+     */
+    public List<MedicoSession> listarMedicosDoBanco() {
+        List<MedicoSession> lista = new ArrayList<>();
+
+        String sql = "SELECT m.id, m.nome, e.nome AS especialidade, m.crm, m.sala AS gabinete, " +
+                "IF(m.ativo = 1, 'Ativo', 'Inativo') AS estado " +
+                "FROM medicos m " +
+                "LEFT JOIN especialidades e ON m.especialidade_id = e.id " +
+                "ORDER BY m.nome ASC";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                String especialidade = rs.getString("especialidade");
+                String crm = rs.getString("crm");
+                String gabinete = rs.getString("gabinete");
+                String estado = rs.getString("estado");
+
+                if (especialidade == null) especialidade = "Sem Especialidade";
+                if (gabinete == null) gabinete = "N/A";
+
+                lista.add(new MedicoSession( id, nome, especialidade, crm, gabinete, estado));
+            }
+
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Erro ao listar médicos do banco de dados", e);
+        }
+
+        return lista;
+    }
+
+    /**
+     * Remove um médico do banco de dados com tratamento transacional
+     * mantendo a integridade referencial das consultas.
+     */
+    public boolean apagarMedicoeDoBanco(int medicoId) {
+        String sqlProntuarios = "DELETE FROM prontuarios WHERE consulta_id IN (SELECT id FROM consultas WHERE medico_id = ?)";
+        String sqlConsultas = "DELETE FROM consultas WHERE medico_id = ?";
+        String sqlUsuarios = "UPDATE usuarios SET medico_id = NULL WHERE medico_id = ?";
+        String sqlMedico = "DELETE FROM medicos WHERE id = ?";
+
+        Connection conn = null;
+        try {
+            conn = getConnection();
+            conn.setAutoCommit(false);
+
+            // 1. Apaga prontuários das consultas do médico
+            try (PreparedStatement pstmt1 = conn.prepareStatement(sqlProntuarios)) {
+                pstmt1.setInt(1, medicoId);
+                pstmt1.executeUpdate();
+            }
+
+            // 2. Apaga consultas associadas ao médico
+            try (PreparedStatement pstmt2 = conn.prepareStatement(sqlConsultas)) {
+                pstmt2.setInt(1, medicoId);
+                pstmt2.executeUpdate();
+            }
+
+            // 3. Desvincula o usuário do médico (se houver)
+            try (PreparedStatement pstmt3 = conn.prepareStatement(sqlUsuarios)) {
+                pstmt3.setInt(1, medicoId);
+                pstmt3.executeUpdate();
+            }
+
+            // 4. Apaga o médico
+            boolean sucesso;
+            try (PreparedStatement pstmt4 = conn.prepareStatement(sqlMedico)) {
+                pstmt4.setInt(1, medicoId);
+                sucesso = pstmt4.executeUpdate() > 0;
+            }
+
+            conn.commit();
+            return sucesso;
+
+        } catch (SQLException e) {
+            if (conn != null) {
+                try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
+            }
+            LOGGER.log(Level.SEVERE, "Erro ao apagar médico do banco de dados (ID: " + medicoId + ")", e);
+            return false;
+        } finally {
+            if (conn != null) {
+                try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+            }
+        }
+    }
 }

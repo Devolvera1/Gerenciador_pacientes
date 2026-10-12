@@ -41,9 +41,10 @@ CREATE TABLE pacientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(250) NOT NULL,
     cpf VARCHAR(11) NOT NULL UNIQUE,
-    email VARCHAR(100) UNIQUE,
+    email VARCHAR(100) UNIQUE NULL,
     telefone VARCHAR(20) NOT NULL,
     data_nascimento DATE NOT NULL,
+    numero_utente VARCHAR(20) UNIQUE NULL,
     nome_responsavel VARCHAR(250) NULL, 
     alergias VARCHAR(255) NULL,
     data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -105,15 +106,28 @@ INSERT INTO medicos (nome, crm, email, telefone, especialidade_id, sala, ativo) 
 ('Dr. Marcos Vinicius', 'CRM-43210', 'marcos.vinicius@clinica.com', '11955555555', 5, 'Consultório 05', TRUE),
 ('Dra. Patricia Rocha', 'CRM-67890', 'patricia.rocha@clinica.com', '11944446666', 6, 'Consultório 06', TRUE);
 
-INSERT INTO pacientes (nome, cpf, email, telefone, data_nascimento, nome_responsavel, alergias, data_cadastro) VALUES
-('Ana Clara Souza', '11122233344', 'ana.souza@email.com', '11912345678', '1990-05-15', NULL, 'Penicilina, Amendoim', '2026-10-10 12:00:00'),
-('Marcos Paulo Dias', '22233344455', 'marcos.dias@email.com', '11923456789', '1985-10-22', NULL, NULL, '2026-10-10 12:00:00'),
-('Lucas Martins', '33344455566', NULL, '11934567890', '2015-08-10', 'Camila Martins (Mãe)', 'Dipirona', '2026-10-10 12:00:00'),
-('Beatriz Costa', '44455566677', 'beatriz.costa@email.com', '11945678901', '1998-02-03', NULL, NULL, '2026-10-10 12:00:00'),
-('Gabriel Rocha', '55566677788', 'gabriel.rocha@email.com', '11956789012', '1979-11-30', NULL, 'Lácteos', '2026-10-10 12:00:00'),
-('Mariana Oliveira', '66677788899', 'mariana.oliveira@email.com', '11967890123', '2001-07-19', NULL, NULL, '2026-10-10 12:00:00'),
-('João Pedro Ramos', '77788899900', NULL, '11978901234', '2018-03-25', 'Sandra Ramos (Mãe)', NULL, '2026-10-10 12:00:00'),
-('Camila Duarte', '88899900011', 'camila.duarte@email.com', '11989012345', '1993-12-05', NULL, 'Sulfamida', '2026-10-10 12:00:00');
+INSERT INTO pacientes (
+    nome, cpf, email, telefone, data_nascimento, numero_utente, nome_responsavel, alergias, data_cadastro
+) VALUES
+-- Registros Originais (Corrigidos)
+('Ana Clara Souza', '11122233344', 'ana.souza@email.com', '11912345678', '1990-05-15', '123456789', NULL, 'Penicilina, Amendoim', '2026-10-10 12:00:00'),
+('Marcos Paulo Dias', '22233344455', 'marcos.dias@email.com', '11923456789', '1985-10-22', '234567890', NULL, NULL, '2026-10-10 12:00:00'),
+('Lucas Martins', '33344455566', NULL, '11934567890', '2015-08-10', '345678901', 'Camila Martins (Mãe)', 'Dipirona', '2026-10-10 12:00:00'),
+('Beatriz Costa', '44455566677', 'beatriz.costa@email.com', '11945678901', '1998-02-03', '456789012', NULL, NULL, '2026-10-10 12:00:00'),
+('Gabriel Rocha', '55566677788', 'gabriel.rocha@email.com', '11956789012', '1979-11-30', '567890123', NULL, 'Lácteos', '2026-10-10 12:00:00'),
+('Mariana Oliveira', '66677788899', 'mariana.oliveira@email.com', '11967890123', '2001-07-19', '678901234', NULL, NULL, '2026-10-10 12:00:00'),
+('João Pedro Ramos', '77788899900', NULL, '11978901234', '2018-03-25', '789012345', 'Sandra Ramos (Mãe)', NULL, '2026-10-10 12:00:00'),
+('Camila Duarte', '88899900011', 'camila.duarte@email.com', '11989012345', '1993-12-05', '890123456', NULL, 'Sulfamida', '2026-10-10 12:00:00'),
+('Rafael Alves Ribeiro', '99900011122', 'rafael.alves@email.com', '11990123456', '1988-04-12', '901234567', NULL, 'Ibuprofeno', '2026-10-11 08:30:00'),
+('Sofia Ferreira Lima', '00011122233', 'sofia.lima@email.com', '11901234567', '2003-09-28', '012345678', NULL, NULL, '2026-10-11 09:15:00'),
+('Enzo Gabriel Santos', '12312312344', NULL, '11911223344', '2019-11-04', '112233445', 'Juliana Santos (Mãe)', 'Poeira, Ácaros', '2026-10-11 10:00:00'),
+('Larissa Mendes Silva', '23423423455', 'larissa.mendes@email.com', '11922334455', '1995-01-17', '223344556', NULL, NULL, '2026-10-11 11:20:00'),
+('Thiago Henrique Prado', '34534534566', 'thiago.prado@email.com', '11933445566', '1972-06-30', '334455667', NULL, 'Frutos do Mar', '2026-10-11 14:00:00'),
+('Alice Barbosa Castro', '45645645677', NULL, '11944556677', '2021-02-14', '445566778', 'Roberto Castro (Pai)', NULL, '2026-10-12 08:00:00'),
+('Rodrigo Nogueira', '56756756788', 'rodrigo.nogueira@email.com', '11955667788', '1982-08-08', '556677889', NULL, 'Látex', '2026-10-12 09:45:00'),
+('Isabela Fernandes', '67867867899', 'isabela.f@email.com', '11966778899', '1999-12-22', '667788990', NULL, NULL, '2026-10-12 11:10:00'),
+('Mateus Cardoso Lima', '78978978900', 'mateus.cardoso@email.com', '11977889900', '2005-03-03', '778899001', NULL, 'Contraste Iodado', '2026-10-12 13:30:00'),
+('Helena Xavier Gomes', '89089089011', NULL, '11988990011', '2016-07-11', '889900112', 'Vanessa Gomes (Mãe)', 'Aspirina', '2026-10-12 15:00:00');
 
 INSERT INTO usuarios (username, senha, perfil, medico_id, status) VALUES
 ('admin', '$2a$12$nv/cbRZk8QSN2ckYLsNp2eWAv8v8MmsuDTEw5DnF4lCa88S1cqxVC', 'ADMIN', NULL, 'ATIVO'),
@@ -129,14 +143,14 @@ INSERT INTO usuarios (username, senha, perfil, medico_id, status) VALUES
 INSERT INTO consultas (paciente_id, medico_id, data_consulta, hora_consulta, status, observacao_cancelamento) VALUES
 (1, 1, '2026-10-10', '09:00:00', 'FINALIZADA', NULL),
 (2, 1, '2026-10-10', '10:30:00', 'CONFIRMADA', NULL),
-(3, 2, '2026-10-10', '14:00:00', 'FINALIZADA', NULL),
-(4, 3, '2026-10-10', '15:00:00', 'CANCELADA', 'Paciente desmarcou por motivo de viagem.'),
-(5, 4, '2026-10-11', '08:00:00', 'AGENDADA', NULL),
-(6, 5, '2026-10-11', '09:30:00', 'AGENDADA', NULL),
-(7, 2, '2026-10-11', '11:00:00', 'CONFIRMADA', NULL),
-(8, 6, '2026-10-12', '14:30:00', 'AGENDADA', NULL),
-(1, 3, '2026-10-12', '16:00:00', 'AGENDADA', NULL),
-(2, 6, '2026-10-13', '10:00:00', 'AGENDADA', NULL);
+(3, 1, '2026-10-10', '14:00:00', 'FINALIZADA', NULL),
+(4, 1, '2026-10-10', '15:00:00', 'CANCELADA', 'Paciente desmarcou por motivo de viagem.'),
+(5, 1, '2026-10-11', '08:00:00', 'AGENDADA', NULL),
+(6, 1, '2026-10-11', '09:30:00', 'AGENDADA', NULL),
+(7, 1, '2026-10-11', '11:00:00', 'CONFIRMADA', NULL),
+(8, 1, '2026-10-12', '14:30:00', 'AGENDADA', NULL),
+(1, 1, '2026-10-12', '16:00:00', 'AGENDADA', NULL),
+(2, 1, '2026-10-13', '10:00:00', 'AGENDADA', NULL);
 
 INSERT INTO prontuarios (consulta_id, medico_id, observacoes_clinicas, prescricoes) VALUES
 (1, 1, 'Paciente relata dores leves no peito ao esforço. Eletrocardiograma sem alterações agudas.', 'AAS 100mg 1x ao dia. Retorno em 30 dias.'),

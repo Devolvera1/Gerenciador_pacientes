@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
@@ -83,7 +84,7 @@ public class LoginController {
                 stage.setTitle("Página Principal");
                 stage.setScene(new Scene(root));
                 stage.setMaximized(true);
-
+                stage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/LogoIcon.png")));
                 Stage loginStage = (Stage) usernameField.getScene().getWindow();
                 loginStage.close();
 

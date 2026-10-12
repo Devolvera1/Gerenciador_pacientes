@@ -19,7 +19,7 @@ public class MainApp extends Application {
         stage.setTitle("Sistema de Gestão de Pacientes");
         stage.setScene(scene);
         stage.setMaximized(true);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/heal.jpg")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/LogoIcon.png")));
         stage.show();
     }
 

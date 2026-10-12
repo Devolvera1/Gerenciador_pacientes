@@ -83,7 +83,7 @@
                             </children>
                         </AnchorPane>
 
-                        <ComboBox fx:id="ComboPacientes" prefHeight="40.0" prefWidth="170.0" promptText="Todas as especialidades" style="-fx-background-color: #FFFFFF; -fx-border-color: #DEE5ED; -fx-border-radius: 5;" />
+                        <ComboBox fx:id="ComboMedicos" prefHeight="40.0" prefWidth="170.0" promptText="Todas as especialidades" style="-fx-background-color: #FFFFFF; -fx-border-color: #DEE5ED; -fx-border-radius: 5;" />
 
                         <Button fx:id="BtnExportar" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #DEE5ED; -fx-border-radius: 5;" text="Exportar" textFill="#233449">
                             <font>

@@ -18,7 +18,7 @@ public class PaginaPrincipal extends Application {
         primaryStage.setTitle("Sistema de Gestão de Pacientes - Pagina Principal");
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/heal.jpg")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/LogoIcon.png")));
         primaryStage.setMaximized(true);
     }
 
