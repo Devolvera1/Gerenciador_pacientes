@@ -95,7 +95,7 @@
          </children>
       </HBox>
 
-      <AnchorPane style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="193.0">
+      <AnchorPane prefHeight="486.0" prefWidth="787.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="193.0">
          <children>
             <AnchorPane prefHeight="58.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -108,7 +108,7 @@
                </children>
             </AnchorPane>
 
-            <TableView fx:id="table" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" styleClass="\@style.css" stylesheets="@style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="58.0">
+            <TableView fx:id="table" prefWidth="767.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" styleClass="\@style.css" stylesheets="@style.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="58.0">
                <columns>
                   <TableColumn fx:id="colHora" prefWidth="75.0" style="-fx-background-color: #F8FAFC;" text="Hora" />
                   <TableColumn fx:id="colPaciente" prefWidth="120.0" style="-fx-background-color: #F8FAFC;" text="Paciente" />
@@ -123,7 +123,7 @@
          </children>
       </AnchorPane>
 
-      <AnchorPane prefWidth="315.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" AnchorPane.bottomAnchor="110.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="193.0">
+      <AnchorPane prefHeight="486.0" prefWidth="315.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="193.0">
          <children>
             <Text fx:id="lblInfosPaciente" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="A seguir" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0">
                <font><Font size="16.0" /></font>

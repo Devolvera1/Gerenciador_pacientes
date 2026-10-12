@@ -1,15 +1,13 @@
 package com.example.sistema_gestao_pacientes.Config;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.example.sistema_gestao_pacientes.Util.ConsultaSession;
-import com.example.sistema_gestao_pacientes.Util.PacienteSession;
-import com.example.sistema_gestao_pacientes.Util.ProximaConsulta;
-import com.example.sistema_gestao_pacientes.Util.UserSession;
+import com.example.sistema_gestao_pacientes.Util.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class DatabaseConnection {
@@ -291,5 +289,37 @@ public class DatabaseConnection {
                 try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
             }
         }
+    }
+
+    public List<ConsultaAgendaDTO> buscarConsultasDaSemana(String nomeMedico, LocalDate dataInicio, LocalDate dataFim) {
+        List<ConsultaAgendaDTO> lista = new ArrayList<>();
+
+        String query = "SELECT c.data_consulta, c.hora_consulta, p.nome AS nome_paciente, c.status " +
+                "FROM consultas c " +
+                "INNER JOIN pacientes p ON c.paciente_id = p.id " +
+                "INNER JOIN medicos m ON c.medico_id = m.id " +
+                "WHERE m.nome = ? AND c.data_consulta BETWEEN ? AND ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, nomeMedico);
+            ps.setDate(2, java.sql.Date.valueOf(dataInicio));
+            ps.setDate(3, java.sql.Date.valueOf(dataFim));
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(new ConsultaAgendaDTO(
+                            rs.getDate("data_consulta").toLocalDate(),
+                            rs.getTime("hora_consulta").toLocalTime(),
+                            rs.getString("nome_paciente"),
+                            rs.getString("status")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
 }

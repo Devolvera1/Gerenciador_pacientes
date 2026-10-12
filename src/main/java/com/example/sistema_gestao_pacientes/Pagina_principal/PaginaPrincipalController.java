@@ -59,13 +59,12 @@ public class PaginaPrincipalController {
         carregarTela("Dashboard.fxml", "Dashboard");
     }
 
-    // Método corrigido para receber o PacienteSession
     public void abrirNovaConsulta() {
         try {
             java.net.URL fxmlUrl = getClass().getResource("/com/example/sistema_gestao_pacientes/NovaConsulta/NovaConsulta.fxml");
 
             if (fxmlUrl == null) {
-                fxmlUrl = getClass().getResource("/NovaConsulta.fxml"); // Corrigido o typo de "NovaConulta"
+                fxmlUrl = getClass().getResource("/NovaConsulta.fxml");
             }
 
             if (fxmlUrl == null) {
@@ -77,8 +76,6 @@ public class PaginaPrincipalController {
 
             NovaConsultaController controller = loader.getController();
             if (controller != null) {
-                // Caso seu NovaConsultaController tenha um método para receber a sessão do paciente, chame-o aqui:
-                // controller.initPaciente(paciente);
             }
 
             AnchorPane.setTopAnchor(newtela, 0.0);
