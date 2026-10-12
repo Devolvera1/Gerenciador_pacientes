@@ -13,6 +13,10 @@ public class MedicoSession {
     private final StringProperty gabinete;
     private final StringProperty estado;
 
+    public MedicoSession() {
+        this(0, "", "", "", "", "");
+    }
+
     public MedicoSession(int id, String nome, String especialidade, String crm, String gabinete, String estado) {
         this.id = new SimpleIntegerProperty(id);
         this.nome = new SimpleStringProperty(nome);
@@ -23,6 +27,7 @@ public class MedicoSession {
     }
 
     public int getId() { return id.get(); }
+    public void setId(int id) { this.id.set(id); }
     public IntegerProperty idProperty() { return id; }
 
     public String getNome() { return nome.get(); }
@@ -44,4 +49,9 @@ public class MedicoSession {
     public String getEstado() { return estado.get(); }
     public void setEstado(String estado) { this.estado.set(estado); }
     public StringProperty estadoProperty() { return estado; }
+
+    @Override
+    public String toString() {
+        return getNome() != null ? getNome() : "";
+    }
 }

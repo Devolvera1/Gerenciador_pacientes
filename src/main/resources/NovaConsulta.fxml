@@ -16,10 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<ScrollPane prefHeight="1056.0" prefWidth="1147.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane prefHeight="1056.0" prefWidth="1147.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.NovaConsulta.NovaConsultaController">
    <content>
-      <AnchorPane prefHeight="1041.0" prefWidth="1168.0" style="-fx-background-color: #F3F5F8;" styleClass="\\\@style.css" stylesheets="@style.css">
+      <AnchorPane prefHeight="1041.0" prefWidth="1168.0" style="-fx-background-color: #F3F5F8;" stylesheets="@style.css">
          <children>
             <VBox layoutX="25.0" prefHeight="53.0" prefWidth="1104.0" spacing="4.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -40,7 +39,7 @@
                            </children>
                         </VBox>
                         <Region prefHeight="53.0" prefWidth="495.0" />
-                        <Button fx:id="BtnVoltarPaciente" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="&lt; Voltar ao Dashboard" textFill="WHITE">
+                        <Button fx:id="Btndash" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="&lt; Voltar ao Dashboard" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="12.0" />
                            </font>
@@ -68,11 +67,34 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="fieldNome" prefHeight="40.0" prefWidth="744.0" />
+                              <ComboBox fx:id="fieldNome" prefHeight="40.0" prefWidth="744.0" style="-fx-background-color: white; -fx-border-color: #000000; -fx-border-radius: 5;" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
+                  <AnchorPane layoutX="15.0" layoutY="125.0" prefHeight="66.0" prefWidth="744.0" style="-fx-background-color: F8FAFC;">
+                     <children>
+                        <Text fx:id="txtNome" fill="#233449" layoutX="96.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente não selecionado">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtnumero" fill="#6d7c8e" layoutX="608.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                           <font>
+                              <Font name="Arial" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtDados" fill="#6d7c8e" layoutX="96.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                           <font>
+                              <Font name="Arial Black" size="11.0" />
+                           </font>
+                        </Text>
+                        <AnchorPane layoutX="33.0" layoutY="14.0" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F3F5F8; -fx-background-radius: 20;">
+                           <children>
+                              <Text fx:id="txtinciais" layoutX="2.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="37.46875" />
+                           </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
                   <Line endX="640.5" layoutX="113.0" layoutY="217.0" startX="-116.0" stroke="#e6ebf1" />
                   <Text fill="#233449" layoutX="14.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profissional e atendimento">
                      <font>
@@ -88,7 +110,7 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="fieldEspecialidade" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                         <VBox prefHeight="40.0" prefWidth="392.0" spacing="5.0">
@@ -98,31 +120,11 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="comboProfissional" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <AnchorPane layoutX="15.0" layoutY="125.0" prefHeight="66.0" prefWidth="744.0" style="-fx-background-color: F8FAFC;">
-                     <children>
-                        <Text fill="#233449" layoutX="96.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ana Martins">
-                           <font>
-                              <Font name="Arial Black" size="13.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" layoutX="608.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(11) 99984-2031">
-                           <font>
-                              <Font name="Arial" size="11.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#6d7c8e" layoutX="96.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38 anos · CPF: ***.***.***-42 · Prontuário P-01024">
-                           <font>
-                              <Font name="Arial Black" size="11.0" />
-                           </font>
-                        </Text>
-                        <AnchorPane layoutX="33.0" layoutY="14.0" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F3F5F8; -fx-background-radius: 20;" />
-                     </children>
-                  </AnchorPane>
                   <HBox layoutX="15.0" layoutY="354.0" prefHeight="63.0" prefWidth="744.0" spacing="35.0">
                      <children>
                         <VBox prefHeight="61.0" prefWidth="372.0" spacing="5.0">
@@ -132,7 +134,7 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="ComboTipoConsulta" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                         <VBox prefHeight="40.0" prefWidth="392.0" spacing="5.0">
@@ -142,11 +144,17 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="comboDuracao" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
+                  <Line endX="634.5" layoutX="125.0" layoutY="438.0" startX="-116.0" stroke="#e6ebf1" />
+                  <Text fill="#233449" layoutX="14.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data, horário e local">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font>
+                  </Text>
                   <HBox layoutX="15.0" layoutY="476.0" prefHeight="63.0" prefWidth="744.0" spacing="35.0">
                      <children>
                         <VBox prefHeight="61.0" prefWidth="372.0" spacing="5.0">
@@ -156,7 +164,7 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <DatePicker prefHeight="40.0" prefWidth="364.0" />
+                              <DatePicker fx:id="DateDataConsulta" prefHeight="40.0" prefWidth="364.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="40.0" prefWidth="392.0" spacing="5.0">
@@ -166,28 +174,23 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="comboHorario" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Text fill="#233449" layoutX="14.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data, horário e local">
-                     <font>
-                        <Font name="Arial Black" size="16.0" />
-                     </font>
-                  </Text>
                   <HBox layoutX="15.0" layoutY="555.0" prefHeight="63.0" prefWidth="744.0" spacing="35.0">
                      <children>
                         <VBox prefHeight="61.0" prefWidth="372.0" spacing="5.0">
                            <children>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta *" wrappingWidth="247.5859375">
+                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Modalidade *" wrappingWidth="247.5859375">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: #225F9E;">
+                              <AnchorPane prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: #225F9E;">
                                  <children>
-                                    <RadioButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Presencial" />
+                                    <RadioButton fx:id="radiopresencial" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" text="Presencial" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -199,9 +202,9 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <AnchorPane prefHeight="66.0" prefWidth="365.0" style="-fx-border-color: #225F9E;">
+                              <AnchorPane prefHeight="40.0" prefWidth="364.0" style="-fx-border-color: #225F9E;">
                                  <children>
-                                    <RadioButton layoutX="14.0" layoutY="15.0" mnemonicParsing="false" text="Teleconsulta" />
+                                    <RadioButton fx:id="radioteleconsulta" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" text="Teleconsulta" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -217,7 +220,7 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="combounidade" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                         <VBox prefHeight="40.0" prefWidth="392.0" spacing="5.0">
@@ -227,44 +230,43 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
+                              <ComboBox fx:id="comboconsutorio" prefHeight="40.0" prefWidth="364.0" style="-fx-background-color: FFFFFF; -fx-border-color: DEE5ED;" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Line endX="634.5" layoutX="125.0" layoutY="438.0" startX="-116.0" stroke="#e6ebf1" />
                   <Line endX="630.5" layoutX="125.0" layoutY="720.0" startX="-116.0" stroke="#e6ebf1" />
                   <Text fill="#233449" layoutX="14.0" layoutY="747.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motivo e observações">
                      <font>
                         <Font name="Arial Black" size="16.0" />
                      </font>
                   </Text>
-                  <HBox layoutX="10.0" layoutY="790.0" prefHeight="40.0" prefWidth="744.0">
-                     <children>
-                        <TextField fx:id="fieldNome1" prefHeight="40.0" prefWidth="744.0" />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="861.0" prefHeight="76.0" prefWidth="744.0">
-                     <children>
-                        <TextField fx:id="fieldNome11" prefHeight="76.0" prefWidth="744.0" />
-                     </children>
-                  </HBox>
                   <Text fill="#233449" layoutX="15.0" layoutY="778.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motivo da consulta *" wrappingWidth="247.5859375">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Text>
+                  <HBox layoutX="10.0" layoutY="790.0" prefHeight="40.0" prefWidth="744.0">
+                     <children>
+                        <TextField fx:id="textfieldmotivo" prefHeight="40.0" prefWidth="744.0" />
+                     </children>
+                  </HBox>
                   <Text fill="#233449" layoutX="15.0" layoutY="849.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observações" wrappingWidth="247.5859375">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Text>
-                  <Text fill="#6d7c8e" layoutX="15.0" layoutY="969.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estas observações ficarão visíveis apenas para a equipe da clínica." wrappingWidth="365.0">
+                  <Text fill="#6d7c8e" layoutX="704.0" layoutY="855.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opcional" wrappingWidth="49.14990234375">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Text>
-                  <Text fill="#6d7c8e" layoutX="704.0" layoutY="855.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opcional" wrappingWidth="49.14990234375">
+                  <HBox layoutX="10.0" layoutY="861.0" prefHeight="76.0" prefWidth="744.0">
+                     <children>
+                        <TextField fx:id="textfieldobs" prefHeight="76.0" prefWidth="744.0" />
+                     </children>
+                  </HBox>
+                  <Text fill="#6d7c8e" layoutX="15.0" layoutY="969.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estas observações ficarão visíveis apenas para a equipe da clínica." wrappingWidth="365.0">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -288,12 +290,12 @@
                                     <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="txtIdentificador" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Ana Martins">
+                              <Text fx:id="TxtNomePaciente" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente não selecionado">
                                  <font>
                                     <Font name="Arial Black" size="18.0" />
                                  </font>
                               </Text>
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="38 anos · Prontuário P-01024">
+                              <Text fx:id="txtIdadeepronuario" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -304,12 +306,12 @@
                                     <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa">
+                              <Text fx:id="txtDr" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Dr(a). Não selecionado">
                                  <font>
                                     <Font name="Arial" size="13.0" />
                                  </font>
                               </Text>
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Clínica geral · Retorno">
+                              <Text fx:id="txtEspecialidade" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -320,23 +322,23 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Terça-feira, 13 de outubro de 2026">
+                              <Text fx:id="txtdatacompleta" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione a data">
                                  <font>
                                     <Font name="Arial" size="13.0" />
                                  </font>
                               </Text>
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Clínica geral 14:00 às 14:30 · 30 minutos· Retorno">
+                              <Text fx:id="txtconfirmacao" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="--:--">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
                               <Line endX="173.0" startX="-100.0" stroke="#dee5ed" />
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atendimento presencial">
+                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atendimento">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade Paulista · Consultório 03">
+                              <Text fx:id="txtunidade" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade Paulista · Consultório 01">
                                  <font>
                                     <Font name="Arial" size="13.0" />
                                  </font>
@@ -347,7 +349,7 @@
                                  </font>
                               </Text>
                               <Line endX="173.0" startX="-100.0" stroke="#dee5ed" />
-                              <CheckBox mnemonicParsing="false" text="Enviar confirmação ao paciente" />
+                              <CheckBox fx:id="checkconfirmacao" mnemonicParsing="false" text="Enviar confirmação ao paciente" />
                            </children>
                            <padding>
                               <Insets left="20.0" />
@@ -355,8 +357,8 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="4.0" layoutY="473.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="304.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="+ Agendar consulta" textFill="WHITE" />
-                  <Button layoutX="3.0" layoutY="523.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="304.0" style="-fx-background-radius: 5; -fx-background-color: white; -fx-border-color: black;" text="Cancelar" />
+                  <Button fx:id="btnagendar" layoutX="4.0" layoutY="473.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="304.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="+ Agendar consulta" textFill="WHITE" />
+                  <Button fx:id="btncancelar" layoutX="3.0" layoutY="523.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="304.0" style="-fx-background-radius: 5; -fx-background-color: white; -fx-border-color: black;" text="Cancelar" />
                   <Text layoutX="7.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confira os dados antes de agendar. O horário será reservado após a confirmação." textAlignment="CENTER" wrappingWidth="295.8720703125" />
                </children>
             </AnchorPane>

@@ -18,16 +18,47 @@ public class PacienteSession {
         this.consulta = new SimpleStringProperty(consulta);
     }
 
-    public int getId() { return id; }
-    public String getNome() { return nome.get(); }
-    public StringProperty nomeProperty() { return nome; }
+    public int getId() {
+        return id;
+    }
 
-    public String getContato() { return contato.get(); }
-    public StringProperty contatoProperty() { return contato; }
+    public String getNome() {
+        return nome.get();
+    }
 
-    public String getUtente() { return utente.get(); }
-    public StringProperty utenteProperty() { return utente; }
+    public StringProperty nomeProperty() {
+        return nome;
+    }
 
-    public String getConsulta() { return consulta.get(); }
-    public StringProperty consultaProperty() { return consulta; }
+    public String getContato() {
+        return contato.get();
+    }
+
+    public StringProperty contatoProperty() {
+        return contato;
+    }
+
+    public String getUtente() {
+        return utente.get();
+    }
+
+    public StringProperty utenteProperty() {
+        return utente;
+    }
+
+    public String getConsulta() {
+        return consulta.get();
+    }
+
+    public StringProperty consultaProperty() {
+        return consulta;
+    }
+
+    // Este método define o texto exibido no ComboBox do JavaFX
+    @Override
+    public String toString() {
+        String nomePaciente = getNome() != null ? getNome() : "";
+        String numUtente = (getUtente() != null && !getUtente().isBlank()) ? " (Utente: " + getUtente() + ")" : "";
+        return nomePaciente + numUtente;
+    }
 }

@@ -28,6 +28,7 @@ public class PaginaPrincipalController {
     @FXML private Text lblMedico;
     @FXML private Text lblPerfil;
     @FXML private AnchorPane conteudoCentral;
+    @FXML private Text txtinciais;
 
     @FXML
     public void initialize() {
@@ -39,17 +40,19 @@ public class PaginaPrincipalController {
         if (sessao != null) {
             lblPerfil.setText(sessao.getPerfil());
 
-            if ("MEDICO".equals(sessao.getPerfil()) && sessao.getNomeMedico() != null) {
-                lblMedico.setText(sessao.getNomeMedico());
-            } else {
-                lblMedico.setText(sessao.getUsername());
-            }
+            String nomeUsuario = ("MEDICO".equals(sessao.getPerfil()) && sessao.getNomeMedico() != null)
+                    ? sessao.getNomeMedico()
+                    : sessao.getUsername();
+
+            lblMedico.setText(nomeUsuario);
+            atualizarIniciaisUsuario(nomeUsuario);
+
         } else {
             lblPerfil.setText("---");
             lblMedico.setText("Nenhum usuário logado");
+            atualizarIniciaisUsuario(null);
         }
 
-        // Listener único para injetar o controller na cena
         conteudoCentral.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.setUserData(this);
@@ -57,6 +60,34 @@ public class PaginaPrincipalController {
         });
 
         carregarTela("Dashboard.fxml", "Dashboard");
+    }
+
+    private void atualizarIniciaisUsuario(String nomeUsuario) {
+        if (txtinciais != null) {
+            String iniciais = extrairIniciais(nomeUsuario);
+            if (!iniciais.isEmpty()) {
+                txtinciais.setText(iniciais);
+                txtinciais.setVisible(true);
+            } else {
+                txtinciais.setText("");
+                txtinciais.setVisible(false);
+            }
+        }
+    }
+
+    private String extrairIniciais(String nomeCompleto) {
+        if (nomeCompleto == null || nomeCompleto.isBlank()) {
+            return "";
+        }
+
+        String[] partes = nomeCompleto.trim().split("\\s+");
+        if (partes.length == 1) {
+            return partes[0].substring(0, 1).toUpperCase();
+        } else {
+            String primeiraLetra = partes[0].substring(0, 1);
+            String ultimaLetra = partes[partes.length - 1].substring(0, 1);
+            return (primeiraLetra + ultimaLetra).toUpperCase();
+        }
     }
 
     public void abrirNovaConsulta() {
@@ -75,8 +106,6 @@ public class PaginaPrincipalController {
             Parent newtela = loader.load();
 
             NovaConsultaController controller = loader.getController();
-            if (controller != null) {
-            }
 
             AnchorPane.setTopAnchor(newtela, 0.0);
             AnchorPane.setBottomAnchor(newtela, 0.0);
@@ -93,7 +122,6 @@ public class PaginaPrincipalController {
         }
     }
 
-
     private void carregarTela(String fxmlFileName, String nomePagina) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlFileName));
@@ -107,7 +135,6 @@ public class PaginaPrincipalController {
             conteudoCentral.getChildren().clear();
             conteudoCentral.getChildren().add(novaTela);
 
-
             lblPage.setText("Área de trabalho  /  " + nomePagina);
 
         } catch (IOException e) {
@@ -117,7 +144,7 @@ public class PaginaPrincipalController {
     }
 
     @FXML
-    private void abrirDashboard() {
+    public void abrirDashboard() {
         carregarTela("Dashboard.fxml", "Dashboard");
     }
 
@@ -138,7 +165,7 @@ public class PaginaPrincipalController {
 
     @FXML
     private void abrirProntuario() {
-       carregarTela("Prontuario.fxml", "Prontuario");
+        carregarTela("Prontuario.fxml", "Prontuario");
     }
 
     @FXML
@@ -193,10 +220,6 @@ public class PaginaPrincipalController {
             java.net.URL fxmlUrl = getClass().getResource("/EditarMedico.fxml");
 
             if (fxmlUrl == null) {
-                fxmlUrl = getClass().getResource("/EditarMedico.fxml");
-            }
-
-            if (fxmlUrl == null) {
                 throw new IOException("Arquivo EditarMedico.fxml não foi encontrado nos recursos.");
             }
 
@@ -223,9 +246,6 @@ public class PaginaPrincipalController {
         }
     }
 
-
-
-
     @FXML
     private void sair(ActionEvent event) {
         try {
@@ -237,7 +257,6 @@ public class PaginaPrincipalController {
             stage.centerOnScreen();
             stage.show();
             stage.setMaximized(true);
-
 
         } catch (IOException e) {
             e.printStackTrace();
