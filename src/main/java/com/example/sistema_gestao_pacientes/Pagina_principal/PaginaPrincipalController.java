@@ -255,8 +255,8 @@ public class PaginaPrincipalController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.centerOnScreen();
-            stage.show();
             stage.setMaximized(true);
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
