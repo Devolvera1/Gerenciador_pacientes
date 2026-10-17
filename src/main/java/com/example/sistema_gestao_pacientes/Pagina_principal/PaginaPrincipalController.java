@@ -171,8 +171,8 @@ public class PaginaPrincipalController {
     }
 
     @FXML
-    public void abrirProntuario(ActionEvent event) {
-        carregarTela("Prontuario.fxml", "Prontuario");
+    public void abrirPendencias(ActionEvent event) {
+        carregarTela("PendenciasMedicas.fxml", "PendenciasMedicas");
     }
 
     @FXML

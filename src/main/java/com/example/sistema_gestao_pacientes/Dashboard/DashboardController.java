@@ -158,6 +158,7 @@ public class DashboardController {
         }
 
         btnProntuario.setDisable(false);
+
     }
 
     private void atualizarEstatisticasCards(String perfil, String nomeMedico) {

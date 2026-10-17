@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="703.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController">
+<AnchorPane prefHeight="703.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController">
    <children>
       <AnchorPane prefHeight="703.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -94,7 +94,7 @@
                      </graphic>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirProntuario" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Prontuários" textFill="#233449">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirPendencias" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Pendências clínicas" textFill="#233449">
                      <font>
                         <Font size="14.0" />
                      </font>
