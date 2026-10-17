@@ -18,8 +18,9 @@ public class LoginApplication extends Application {
         primaryStage.setTitle("Sistema de Gestão de Pacientes - Login");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imagens/heal.jpg")));
-        primaryStage.show();
+        primaryStage.centerOnScreen();
         primaryStage.setMaximized(true);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

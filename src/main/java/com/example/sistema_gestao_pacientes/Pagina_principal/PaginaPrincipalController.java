@@ -23,12 +23,18 @@ import java.util.Locale;
 
 public class PaginaPrincipalController {
 
-    @FXML private Text lblData;
-    @FXML private Text lblPage;
-    @FXML private Text lblMedico;
-    @FXML private Text lblPerfil;
-    @FXML private AnchorPane conteudoCentral;
-    @FXML private Text txtinciais;
+    @FXML
+    private Text lblData;
+    @FXML
+    private Text lblPage;
+    @FXML
+    private Text lblMedico;
+    @FXML
+    private Text lblPerfil;
+    @FXML
+    private AnchorPane conteudoCentral;
+    @FXML
+    private Text txtinciais;
 
     @FXML
     public void initialize() {
@@ -251,13 +257,8 @@ public class PaginaPrincipalController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.setMaximized(true);
-            stage.show();
-
+            Scene cenaAtual = ((Node) event.getSource()).getScene();
+            cenaAtual.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Erro ao tentar voltar para a tela de Login.");
