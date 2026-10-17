@@ -3,12 +3,15 @@ package com.example.sistema_gestao_pacientes.Dashboard;
 import com.example.sistema_gestao_pacientes.Config.DatabaseConnection;
 import com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController;
 import com.example.sistema_gestao_pacientes.Util.ConsultaSession;
-import com.example.sistema_gestao_pacientes.Util.PacienteSession;
 import com.example.sistema_gestao_pacientes.Util.ProximaConsulta;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -86,9 +89,13 @@ public class DashboardController {
         colPaciente.setCellFactory(column -> aplicarTextoNegrito());
         colTipo.setCellFactory(column -> aplicarTextoCinza());
         colEstado.setCellFactory(column -> aplicarBadgeStatus());
-        BtnNovaConsulta.setOnAction(event -> {
-            NovaConsulta();
-        });
+
+        BtnNovaConsulta.setOnAction(event -> NovaConsulta());
+        
+        if (btnProntuario != null) {
+            btnProntuario.setOnAction(event -> abrirProntuarioSelecionado());
+        }
+
         table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 atualizarPainelASeguir(
@@ -141,7 +148,7 @@ public class DashboardController {
             if (lblInfosPaciente != null) {
                 lblInfosPaciente.setText("---");
             }
-            btnProntuario.setDisable(true);
+            if(btnProntuario != null) btnProntuario.setDisable(true);
         }
     }
 
@@ -157,8 +164,54 @@ public class DashboardController {
             lblInfosPaciente.setText(infoExtra);
         }
 
-        btnProntuario.setDisable(false);
+        if(btnProntuario != null) btnProntuario.setDisable(false);
+    }
 
+    private void abrirProntuarioSelecionado() {
+        String nomePaciente = lblNomePaciente.getText();
+
+        if (nomePaciente == null || nomePaciente.equals("---") || nomePaciente.equals("Sem consultas agendadas")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Selecione um paciente válido na agenda para abrir o prontuário.", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
+        int pacienteId = buscarIdPacientePorNome(nomePaciente);
+
+        if (pacienteId != -1) {
+            try {
+                PaginaPrincipalController principalController = (PaginaPrincipalController) btnProntuario.getScene().getUserData();
+                if (principalController != null) {
+                    principalController.abrirProntuario(pacienteId);
+                } else {
+                    System.err.println("Erro: PaginaPrincipalController não encontrado na cena.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Não foi possível carregar a tela do Prontuário.", ButtonType.OK);
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao localizar o ID do paciente no banco de dados.", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
+    private int buscarIdPacientePorNome(String nomePaciente) {
+        String sql = "SELECT id FROM pacientes WHERE nome = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nomePaciente);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Erro ao buscar ID do paciente pelo nome: " + nomePaciente, e);
+        }
+        return -1;
     }
 
     private void atualizarEstatisticasCards(String perfil, String nomeMedico) {
@@ -196,7 +249,6 @@ public class DashboardController {
             if (ocupa != null) ocupa.setText("+5% face à semana anterior");
         } catch (Exception e) {
         }
-
     }
 
     private void NovaConsulta() {
@@ -215,7 +267,6 @@ public class DashboardController {
             alert.showAndWait();
         }
     }
-
 
     private TableCell<ConsultaSession, String> aplicarTextoNegrito() {
         return new TableCell<>() {
