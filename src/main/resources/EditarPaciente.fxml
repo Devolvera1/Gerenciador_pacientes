@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController">
+<AnchorPane prefHeight="650.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="618.0" prefWidth="1144.0" style="-fx-background-color: #F3F5F8;" styleClass="\\\@style.css" stylesheets="@style.css">
          <children>
@@ -26,14 +26,14 @@
                                     <Font name="Arial Black" size="26.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="bemvindo" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualize os dados administrativos de Ana Martins.">
+                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualize os dados administrativos.">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
-                        <Region prefHeight="53.0" prefWidth="639.0" />
+                        <Region prefHeight="54.0" prefWidth="684.0" />
                         <Button fx:id="BtnVoltarPaciente" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="&lt; Voltar aos pacientes" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="12.0" />
@@ -57,11 +57,6 @@
                   <Text fill="#233449" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identificação">
                      <font>
                         <Font name="Arial Black" size="16.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="bemvindo1" fill="#6d7c8e" layoutX="15.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualize os dados administrativos de Ana Martins.">
-                     <font>
-                        <Font name="Arial" size="12.0" />
                      </font>
                   </Text>
                   <HBox layoutX="14.0" layoutY="74.0" prefHeight="177.0" prefWidth="1082.0" spacing="30.0">

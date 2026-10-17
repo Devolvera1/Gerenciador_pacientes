@@ -42,6 +42,8 @@ public class MedicosController {
     @FXML private Button BtnAnterior;
     @FXML private Button BtnSeguinte;
     @FXML private Button BtnExportar;
+    @FXML private Button BtnAdicionarMedico;
+    @FXML private Button BtnEditarMedico;
 
     @FXML private Text QtdRegistros;
     @FXML private Text TextNumList;
@@ -56,6 +58,7 @@ public class MedicosController {
 
     @FXML
     public void initialize() {
+        BtnAdicionarMedico.setOnAction(event -> novoMedico());
         colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colEspecialidade.setCellValueFactory(new PropertyValueFactory<>("especialidade"));
         colCRM.setCellValueFactory(new PropertyValueFactory<>("crm"));
@@ -303,5 +306,19 @@ public class MedicosController {
                 .replace(">", "&gt;")
                 .replace("\"", "&quot;")
                 .replace("'", "&apos;");
+    }
+
+    @FXML
+    private void novoMedico() {
+        try {
+            if (BtnAdicionarMedico != null && BtnAdicionarMedico.getScene() != null) {
+                Object userData = BtnAdicionarMedico.getScene().getUserData();
+                if (userData instanceof PaginaPrincipalController) {
+                    ((PaginaPrincipalController) userData).abrirTelaAdicionarMedico();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

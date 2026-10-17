@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -283,6 +282,35 @@ public class PaginaPrincipalController {
             System.err.println("ERRO GRAVE: Não foi possível carregar a tela de edição.");
         }
     }
+    public void abrirTelaAdicionarMedico() {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource("/NovoMedico.fxml");
+
+            if (fxmlUrl == null) {
+                fxmlUrl = getClass().getResource("/NovoMedico.fxml");
+            }
+
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo NovoMedico.fxml não foi encontrado nos recursos.");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            Parent novaTela = loader.load();
+
+            AnchorPane.setTopAnchor(novaTela, 0.0);
+            AnchorPane.setBottomAnchor(novaTela, 0.0);
+            AnchorPane.setLeftAnchor(novaTela, 0.0);
+            AnchorPane.setRightAnchor(novaTela, 0.0);
+
+            conteudoCentral.getChildren().clear();
+            conteudoCentral.getChildren().add(novaTela);
+            lblPage.setText("Área de trabalho  /  Médico  /  Adicionar Médico");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERRO GRAVE: Não foi possível carregar a tela de adição.");
+        }
+    }
 
     public void abrirTelaAdicionarPaciente() {
         try {
@@ -306,7 +334,7 @@ public class PaginaPrincipalController {
 
             conteudoCentral.getChildren().clear();
             conteudoCentral.getChildren().add(novaTela);
-            lblPage.setText("Área de trabalho  /  Pacientes  /  Editar paciente");
+            lblPage.setText("Área de trabalho  /  Pacientes  /  Adicionar paciente");
 
         } catch (IOException e) {
             e.printStackTrace();
