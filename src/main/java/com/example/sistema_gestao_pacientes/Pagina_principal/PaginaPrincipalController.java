@@ -284,6 +284,36 @@ public class PaginaPrincipalController {
         }
     }
 
+    public void abrirTelaAdicionarPaciente() {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource("/com/example/sistema_gestao_pacientes/NovoPaciente/NovoPaciente.fxml");
+
+            if (fxmlUrl == null) {
+                fxmlUrl = getClass().getResource("/NovoPaciente.fxml");
+            }
+
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo NovoPaciente.fxml não foi encontrado nos recursos.");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            Parent novaTela = loader.load();
+
+            AnchorPane.setTopAnchor(novaTela, 0.0);
+            AnchorPane.setBottomAnchor(novaTela, 0.0);
+            AnchorPane.setLeftAnchor(novaTela, 0.0);
+            AnchorPane.setRightAnchor(novaTela, 0.0);
+
+            conteudoCentral.getChildren().clear();
+            conteudoCentral.getChildren().add(novaTela);
+            lblPage.setText("Área de trabalho  /  Pacientes  /  Editar paciente");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERRO GRAVE: Não foi possível carregar a tela de edição.");
+        }
+    }
+
 
     @FXML
     private void sair(ActionEvent event) {

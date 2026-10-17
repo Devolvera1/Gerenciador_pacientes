@@ -28,7 +28,7 @@ public class PacientesController {
     @FXML private TableColumn<PacienteSession, String> colUtente;
     @FXML private TableColumn<PacienteSession, String> colUltimaConsulta;
     @FXML private TableColumn<PacienteSession, Void> colAcoes;
-
+    @FXML private Button BtnAdicionarPaciente;
     @FXML private TextField Pesquisa;
     @FXML private ComboBox<String> ComboPacientes;
     @FXML private Button BtnExportar;
@@ -47,6 +47,7 @@ public class PacientesController {
 
     @FXML
     public void initialize() {
+        BtnAdicionarPaciente.setOnAction(event -> novoPaciente());
         colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colContato.setCellValueFactory(new PropertyValueFactory<>("contato"));
         colUtente.setCellValueFactory(new PropertyValueFactory<>("utente"));
@@ -312,5 +313,19 @@ public class PacientesController {
                 .replace(">", "&gt;")
                 .replace("\"", "&quot;")
                 .replace("'", "&apos;");
+    }
+
+    @FXML
+    private void novoPaciente() {
+        try {
+            if (BtnAdicionarPaciente != null && BtnAdicionarPaciente.getScene() != null) {
+                Object userData = BtnAdicionarPaciente.getScene().getUserData();
+                if (userData instanceof PaginaPrincipalController) {
+                    ((PaginaPrincipalController) userData).abrirTelaAdicionarPaciente();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
