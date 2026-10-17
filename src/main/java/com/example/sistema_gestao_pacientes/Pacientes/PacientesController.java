@@ -2,6 +2,7 @@ package com.example.sistema_gestao_pacientes.Pacientes;
 
 import com.example.sistema_gestao_pacientes.Config.DatabaseConnection;
 import com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController;
+import com.example.sistema_gestao_pacientes.Prontuario.ProntuarioController;
 import com.example.sistema_gestao_pacientes.Util.PacienteSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,13 +53,21 @@ public class PacientesController {
         colUltimaConsulta.setCellValueFactory(new PropertyValueFactory<>("consulta"));
 
         colAcoes.setCellFactory(param -> new TableCell<>() {
+            private final Button btnProntuario = new Button("Prontuario");
             private final Button btnEditar = new Button("Editar");
             private final Button btnApagar = new Button("Apagar");
-            private final HBox pane = new HBox(8, btnEditar, btnApagar);
+
+            private final HBox pane = new HBox(8, btnProntuario, btnEditar, btnApagar);
 
             {
                 btnEditar.setStyle("-fx-background-color: #225F9E; -fx-text-fill: white; -fx-cursor: hand; -fx-font-size: 11px; -fx-background-radius: 4;");
                 btnApagar.setStyle("-fx-background-color: #EF4444; -fx-text-fill: white; -fx-cursor: hand; -fx-font-size: 11px; -fx-background-radius: 4;");
+                btnProntuario.setStyle("-fx-background-color: #88e788; -fx-text-fill: white; -fx-cursor: hand; -fx-font-size: 11px; -fx-background-radius: 4;");
+
+                btnProntuario.setOnAction(event -> {
+                    PacienteSession paciente = getTableView().getItems().get(getIndex());
+                    abrirProntuario(paciente);
+                });
 
                 btnEditar.setOnAction(event -> {
                     PacienteSession paciente = getTableView().getItems().get(getIndex());
@@ -93,6 +102,23 @@ public class PacientesController {
 
         filtrarEAtualizar();
         atualizarContadorTotalPacientes();
+    }
+
+    private void abrirProntuario(PacienteSession paciente) {
+        try {
+            PaginaPrincipalController principalController = (PaginaPrincipalController) table.getScene().getUserData();
+
+            if (principalController != null) {
+                principalController.abrirProntuario(paciente.getId());
+            } else {
+                System.err.println("Erro: PaginaPrincipalController não encontrado na cena.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Não foi possível carregar a tela de pacientes.", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
 
     private void editarPaciente(PacienteSession paciente) {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -15,78 +16,67 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Prontuario.ProntuarioController">
    <content>
-      <AnchorPane prefHeight="804.0" prefWidth="1105.0">
+      <AnchorPane prefHeight="804.0" prefWidth="1131.0" style="-fx-background-color: #F4F6F9;">
          <children>
-            <AnchorPane layoutX="10.0" layoutY="71.0" prefHeight="133.0" prefWidth="1078.0" style="-fx-background-color: FFFFFF; -fx-border-radius: DEE5ED; -fx-background-radius: 10;">
+            <AnchorPane layoutX="28.0" layoutY="67.0" prefHeight="133.0" prefWidth="1078.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
                <children>
-                  <Text fx:id="txtnumero" fill="#6d7c8e" layoutX="608.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
-                     <font>
-                        <Font name="Arial" size="11.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="txtDados" fill="#6d7c8e" layoutX="96.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
-                     <font>
-                        <Font name="Arial Black" size="11.0" />
-                     </font>
-                  </Text>
-                  <HBox layoutX="35.0" layoutY="11.0" prefHeight="100.0" prefWidth="153.0" />
                   <HBox alignment="CENTER_LEFT" layoutX="29.0" prefHeight="80.0" prefWidth="958.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="145.0">
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="180.0">
                            <children>
-                              <Text fx:id="txtNome1" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Ana Martins">
+                              <Text fx:id="txtNome" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Ana Martins">
                                  <font>
                                     <Font name="Arial Black" size="22.0" />
                                  </font>
                               </Text>
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="P-01024 · Feminino · 38 anos" textAlignment="CENTER">
+                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="P-01024 · Feminino · 38 anos">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
-                        <Region prefHeight="100.0" prefWidth="143.0" />
-                        <Line endX="-100.0" endY="63.0" startX="-100.0" startY="21.0" stroke="#dee5ed" />
-                        <Region prefHeight="100.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <Region prefHeight="80.0" prefWidth="124.0" />
+                        <Line endX="-100.0" endY="50.0" startX="-100.0" startY="15.0" stroke="#dee5ed" />
+                        <Region prefHeight="80.0" prefWidth="80.0" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="120.0">
                            <children>
                               <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA DE NASCIMENTO">
                                  <font>
-                                    <Font name="Arial" size="12.0" />
+                                    <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="14/03/1988">
+                              <Text fx:id="dtxDataNacimento" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="14/03/1988">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
-                        <Region prefHeight="100.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <Region prefHeight="80.0" prefWidth="60.0" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="110.0">
                            <children>
                               <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="N.º DE UTENTE">
                                  <font>
-                                    <Font name="Arial" size="12.0" />
+                                    <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="900 001 024">
+                              <Text fx:id="txtUtente" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="900 001 024">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
-                        <Region prefHeight="100.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <Region prefHeight="80.0" prefWidth="60.0" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="110.0">
                            <children>
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone">
+                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="TELEFONE">
                                  <font>
-                                    <Font name="Arial" size="12.0" />
+                                    <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="912 345 601">
+                              <Text fx:id="txtTelefone" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="912 345 601">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -95,23 +85,22 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="29.0" layoutY="93.0" prefHeight="37.0" prefWidth="301.0" style="-fx-background-radius: 6;">
+                  <HBox alignment="CENTER_LEFT" layoutX="29.0" layoutY="84.0" prefHeight="35.0" prefWidth="309.0" spacing="15.0">
                      <children>
-                        <AnchorPane prefHeight="23.0" prefWidth="113.0" style="-fx-background-color: #FFF6E5; -fx-background-radius: 5;">
+                        <AnchorPane prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #FFF6E5; -fx-background-radius: 5;">
                            <children>
-                              <Text fill="#946a24" layoutX="9.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alergia: penicilina">
+                              <Text fx:id="txtAlergia" fill="#946a24" layoutX="22.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alergia: penicilina">
                                  <font>
-                                    <Font name="Arial" size="12.0" />
+                                    <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
-                        <Region prefHeight="37.0" prefWidth="33.0" style="-fx-background-radius: 5;" />
-                        <AnchorPane prefHeight="23.0" prefWidth="149.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 5;">
+                        <AnchorPane fx:id="txtMedicação" prefHeight="25.0" prefWidth="160.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 5;">
                            <children>
-                              <Text fill="#225f9e" layoutX="9.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sem medicação habitual" textAlignment="CENTER">
+                              <Text fx:id="TxtMedicamentos" fill="#225f9e" layoutX="14.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sem medicação habitual">
                                  <font>
-                                    <Font name="Arial" size="12.0" />
+                                    <Font name="Arial" size="11.0" />
                                  </font>
                               </Text>
                            </children>
@@ -120,46 +109,43 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="1114.0">
+
+            <HBox alignment="CENTER_LEFT" layoutX="28.0" layoutY="14.0" prefHeight="53.0" prefWidth="1077.0">
                <children>
-                  <VBox prefHeight="53.0" prefWidth="360.0" spacing="2.0">
+                  <VBox prefHeight="53.0" prefWidth="450.0" spacing="2.0">
                      <children>
                         <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Prontuário Médico">
                            <font>
                               <Font name="Arial Black" size="26.0" />
                            </font>
                         </Text>
-                        <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Pacientes / Ana Martins / Registar consulta">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font>
-                        </Text>
                      </children>
                   </VBox>
-                  <Region prefHeight="53.0" prefWidth="495.0" />
-                  <Button fx:id="Btndash" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="&lt; Voltar Aos Pacientes" textFill="WHITE">
+                  <Region prefHeight="53.0" prefWidth="413.0" />
+                  <Button fx:id="BtnPacientes" mnemonicParsing="false" onAction="#abrirDashboard" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="&lt; Voltar Aos Pacientes" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
-                     <padding>
-                        <Insets left="15.0" right="15.0" />
-                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
-            <AnchorPane layoutX="10.0" layoutY="213.0" prefHeight="574.0" prefWidth="360.0" style="-fx-background-color: FFFFFF; -fx-border-radius: DEE5ED; -fx-background-radius: 10;">
+
+            <AnchorPane layoutX="28.0" layoutY="213.0" prefHeight="574.0" prefWidth="360.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
                <children>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="31.0" prefWidth="336.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="330.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Histórico de consultas">
                            <font>
-                              <Font name="Arial Black" size="16.0" />
+                              <Font name="Arial Black" size="15.0" />
                            </font>
                         </Text>
-                        <Region prefHeight="31.0" prefWidth="98.0" />
-                        <AnchorPane prefHeight="23.0" prefWidth="149.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 5;">
+                        <Region prefHeight="31.0" prefWidth="80.0" />
+                        <AnchorPane prefHeight="23.0" prefWidth="85.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 5;">
                            <children>
-                              <Text fill="#225f9e" layoutX="24.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 registos" textAlignment="CENTER">
+                              <Text fx:id="txtRegistros" fill="#225f9e" layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 registos">
                                  <font>
                                     <Font name="Arial" size="11.0" />
                                  </font>
@@ -168,78 +154,106 @@
                         </AnchorPane>
                      </children>
                   </HBox>
-                  <VBox layoutX="12.0" layoutY="63.0" prefHeight="502.0" prefWidth="336.0">
+                  <VBox layoutX="14.0" layoutY="55.0" prefHeight="505.0" prefWidth="332.0" spacing="12.0">
                      <children>
-                        <AnchorPane prefHeight="128.0" prefWidth="320.0" style="-fx-background-color: EAF2FB; -fx-border-radius: C7DDF3; -fx-background-radius: 10;">
+                        <AnchorPane prefHeight="130.0" prefWidth="332.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 8;">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="8.0" prefHeight="133.0" prefWidth="301.0" spacing="10.0">
+                              <VBox layoutX="12.0" layoutY="10.0" prefHeight="110.0" prefWidth="308.0" spacing="5.0">
                                  <children>
-                                    <Text fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="07 outubro 2026 · 11:00" wrappingWidth="267.9765625">
+                                    <Text fx:id="txtDataconsulta" fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="07 outubro 2026 · 11:00">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="System Bold" size="11.0" />
                                        </font>
                                     </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medicina Geral e Familiar" wrappingWidth="269.9765625">
+                                    <Text fx:id="txtEspecialidade" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicina Geral e Familiar">
                                        <font>
                                           <Font name="System Bold" size="13.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação de cefaleia ligeira. Sem sinais de alarme. Aconselhada hidratação e reavaliação em 48 horas." wrappingWidth="291.9765625" />
-                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="284.9765625">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Text>
+                                    <Text fx:id="txtobs" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação de cefaleia ligeira. Sem sinais de alarme. Aconselhada hidratação." wrappingWidth="300.0" />
+                                    <HBox prefHeight="9.0" prefWidth="308.0">
+                                       <children>
+                                          <Text fx:id="txtNomeMedico" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Text>
+                                          <Region prefHeight="14.0" prefWidth="218.0" />
+                                          <ImageView fx:id="abrirRegistro" fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imagens/file.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
                         </AnchorPane>
-                        <Region prefHeight="21.0" prefWidth="336.0" />
-                        <AnchorPane prefHeight="128.0" prefWidth="320.0" style="-fx-background-color: EAF2FB; -fx-border-radius: C7DDF3; -fx-background-radius: 10;">
+                        <AnchorPane prefHeight="130.0" prefWidth="332.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 8;">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="8.0" prefHeight="133.0" prefWidth="301.0" spacing="10.0">
+                              <VBox layoutX="12.0" layoutY="10.0" prefHeight="110.0" prefWidth="308.0" spacing="5.0">
                                  <children>
-                                    <Text fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="10 outubro 2026 · 11:00" wrappingWidth="267.9765625">
+                                    <Text fx:id="txtDataconsulta1" fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="10 outubro 2026 · 11:00">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="System Bold" size="11.0" />
                                        </font>
                                     </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medicina Geral e Familiar" wrappingWidth="269.9765625">
+                                    <Text fx:id="txtEspecialidade1" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicina Geral e Familiar">
                                        <font>
                                           <Font name="System Bold" size="13.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação de cefaleia ligeira. Sem sinais de alarme. Aconselhada hidratação e reavaliação em 48 horas." wrappingWidth="291.9765625" />
-                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="284.9765625">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Text>
+                                    <Text fx:id="txtObs1" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Reavaliação de sintomas. Quadro estável. Mantém repouso relativo." wrappingWidth="300.0" />
+                                    <HBox prefHeight="9.0" prefWidth="308.0">
+                                       <children>
+                                          <Text fx:id="txtNomeMedico1" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Text>
+                                          <Region prefHeight="14.0" prefWidth="218.0" />
+                                          <ImageView fx:id="abrirRegistro" fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imagens/file.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
                         </AnchorPane>
-                        <Region prefHeight="21.0" prefWidth="336.0" />
-                        <AnchorPane prefHeight="171.0" prefWidth="336.0" style="-fx-background-color: EAF2FB; -fx-border-radius: C7DDF3; -fx-background-radius: 10;">
+                        <AnchorPane prefHeight="130.0" prefWidth="332.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 8;">
                            <children>
-                              <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="8.0" prefHeight="133.0" prefWidth="301.0" spacing="10.0">
+                              <VBox layoutX="12.0" layoutY="10.0" prefHeight="110.0" prefWidth="308.0" spacing="5.0">
                                  <children>
-                                    <Text fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="11 outubro 2026 · 11:00" wrappingWidth="267.9765625">
+                                    <Text fx:id="txtDataconsulta2" fill="#225f9e" strokeType="OUTSIDE" strokeWidth="0.0" text="11 outubro 2026 · 11:00">
                                        <font>
-                                          <Font size="11.0" />
+                                          <Font name="System Bold" size="11.0" />
                                        </font>
                                     </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medicina Geral e Familiar" wrappingWidth="269.9765625">
+                                    <Text fx:id="txtEspecialidade2" strokeType="OUTSIDE" strokeWidth="0.0" text="Medicina Geral e Familiar">
                                        <font>
                                           <Font name="System Bold" size="13.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Avaliação de cefaleia ligeira. Sem sinais de alarme. Aconselhada hidratação e reavaliação em 48 horas." wrappingWidth="291.9765625" />
-                                    <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="284.9765625">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Text>
+                                    <Text fx:id="txtObs2" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Alta clínica do episódio de cefaleia. Sem queixas atuais." wrappingWidth="300.0" />
+                                    <HBox prefHeight="9.0" prefWidth="308.0">
+                                       <children>
+                                          <Text fx:id="txtNomeMedico2" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Text>
+                                          <Region prefHeight="14.0" prefWidth="218.0" />
+                                          <ImageView fx:id="abrirRegistro" fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imagens/file.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
@@ -248,28 +262,28 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="384.0" layoutY="213.0" prefHeight="574.0" prefWidth="707.0" style="-fx-background-color: FFFFFF; -fx-border-radius: DEE5ED; -fx-background-radius: 10;">
+
+            <AnchorPane layoutX="399.0" layoutY="213.0" prefHeight="574.0" prefWidth="707.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
                <children>
-                  <HBox alignment="CENTER" layoutX="9.0" layoutY="23.0" prefHeight="41.0" prefWidth="690.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="45.0" prefWidth="667.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="45.0" prefWidth="480.0">
                            <children>
                               <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Registar consulta">
                                  <font>
                                     <Font name="Arial Black" size="17.0" />
                                  </font>
                               </Text>
-                              <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="9 outubro 2026 · 09:00–10:00 · Gabinete 01">
+                              <Text fx:id="txtDataHoraGabinete" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="9 outubro 2026 · 09:00–10:00 · Gabinete 01">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Text>
                            </children>
                         </VBox>
-                        <Region prefHeight="31.0" prefWidth="348.0" />
-                        <AnchorPane prefHeight="23.0" prefWidth="149.0" style="-fx-background-color: #FFF6E5; -fx-background-radius: 5;">
+                        <AnchorPane prefHeight="23.0" prefWidth="110.0" style="-fx-background-color: #FFF6E5; -fx-background-radius: 5;">
                            <children>
-                              <Text fill="#946a24" layoutX="35.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por guardar" textAlignment="CENTER">
+                              <Text fill="#946a24" layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por guardar">
                                  <font>
                                     <Font name="Arial" size="11.0" />
                                  </font>
@@ -278,75 +292,75 @@
                         </AnchorPane>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="82.0" prefHeight="53.0" prefWidth="690.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="78.0" prefHeight="45.0" prefWidth="667.0">
                      <children>
-                        <VBox prefHeight="100.0" prefWidth="49.0">
+                        <VBox prefHeight="45.0" prefWidth="300.0" spacing="2.0">
                            <children>
                               <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="MÉDICO RESPONSÁVEL">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font name="Arial Bold" size="10.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa · CRM-001284" />
+                              <Text fx:id="txtMedicoeCrm" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa · CRM-001284">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </VBox>
-                        <Region prefHeight="53.0" prefWidth="254.0" />
-                        <VBox prefHeight="100.0" prefWidth="49.0">
+                        <VBox prefHeight="45.0" prefWidth="300.0" spacing="2.0">
                            <children>
                               <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="TIPO DE CONSULTA">
                                  <font>
-                                    <Font size="10.0" />
+                                    <Font name="Arial Bold" size="10.0" />
                                  </font>
                               </Text>
-                              <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta de seguimento" />
+                              <Text fx:id="txtTipoconsulta" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta de seguimento">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="9.0" layoutY="168.0" prefHeight="58.0" prefWidth="690.0">
+                  <HBox alignment="CENTER" layoutX="20.0" layoutY="135.0" prefHeight="55.0" prefWidth="667.0" spacing="15.0">
                      <children>
-                        <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Tensão arterial" style="-fx-background-color: DEE5ED; -fx-border-radius: E6EBF2; -fx-background-radius: 10;">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </TextArea>
-                        <VBox prefHeight="58.0" prefWidth="45.0" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Frequência cardíaca" style="-fx-background-color: DEE5ED; -fx-border-radius: E6EBF2; -fx-background-radius: 10;">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </TextArea>
-                        <VBox prefHeight="58.0" prefWidth="42.0" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Temperatura" style="-fx-background-color: DEE5ED; -fx-border-radius: E6EBF2; -fx-background-radius: 10;">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </TextArea>
+                        <TextArea fx:id="txtareaTensaoArterial" prefHeight="55.0" prefWidth="210.0" promptText="Tensão arterial (ex: 120/80)" />
+                        <TextArea fx:id="txtareaFrenquencia" prefHeight="55.0" prefWidth="210.0" promptText="Frequência cardíaca (bpm)" />
+                        <TextArea fx:id="txtareaTemp" prefHeight="55.0" prefWidth="210.0" promptText="Temperatura (°C)" />
                      </children>
                   </HBox>
-                  <VBox layoutX="14.0" layoutY="265.0" prefHeight="200.0" prefWidth="690.0">
+                  <VBox layoutX="20.0" layoutY="210.0" prefHeight="275.0" prefWidth="667.0" spacing="8.0">
                      <children>
-                        <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Registar consulta">
+                        <Text fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Notas Clínicas / Prescrição">
                            <font>
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Text>
-                        <TextArea prefHeight="181.0" prefWidth="397.0" />
+                        <TextArea fx:id="txtareaNotas" prefHeight="210.0" prefWidth="667.0" promptText="Escreva aqui o registo detalhado da consulta..." />
                         <Text fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Registo associado à consulta de hoje. Confirme a informação antes de guardar.">
                            <font>
-                              <Font name="Arial Black" size="10.0" />
+                              <Font name="Arial" size="11.0" />
                            </font>
                         </Text>
                      </children>
                   </VBox>
-                  <HBox layoutX="416.0" layoutY="506.0" prefHeight="37.0" prefWidth="285.0" spacing="20.0" style="-fx-border-radius: black;">
+                  <HBox alignment="CENTER_RIGHT" layoutX="380.0" layoutY="505.0" prefHeight="40.0" prefWidth="307.0" spacing="15.0">
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" style="-fx-background-color: FFFFFF; -fx-border-color: black; -fx-background-radius: 10;" stylesheets="@style.css" text="Cancelar">
+                        <Button fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" text="Cancelar">
                            <cursor>
-                              <Cursor fx:constant="DEFAULT" />
+                              <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #225F9E;" text="Guardar Registo" textFill="WHITE" />
+                        <Button fx:id="btnSalvar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #225F9E; -fx-background-radius: 5;" text="Guardar Registo" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </HBox>
                </children>

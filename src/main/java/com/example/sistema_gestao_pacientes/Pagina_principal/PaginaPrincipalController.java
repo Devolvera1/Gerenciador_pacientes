@@ -3,6 +3,7 @@ package com.example.sistema_gestao_pacientes.Pagina_principal;
 import com.example.sistema_gestao_pacientes.EditarMedico.EditarMedicoController;
 import com.example.sistema_gestao_pacientes.EditarPaciente.EditarPacienteController;
 import com.example.sistema_gestao_pacientes.NovaConsulta.NovaConsultaController;
+import com.example.sistema_gestao_pacientes.Prontuario.ProntuarioController;
 import com.example.sistema_gestao_pacientes.Util.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -155,7 +156,7 @@ public class PaginaPrincipalController {
     }
 
     @FXML
-    private void abrirPacientes() {
+    public void abrirPacientes() {
         carregarTela("Pacientes.fxml", "Pacientes");
     }
 
@@ -170,7 +171,7 @@ public class PaginaPrincipalController {
     }
 
     @FXML
-    private void abrirProntuario() {
+    public void abrirProntuario(ActionEvent event) {
         carregarTela("Prontuario.fxml", "Prontuario");
     }
 
@@ -221,6 +222,37 @@ public class PaginaPrincipalController {
         }
     }
 
+    public void abrirProntuario(int PacienteId) {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource("/Prontuario.fxml");
+
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo Prontuario.fxml não foi encontrado nos recursos.");
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            Parent novaTela = loader.load();
+
+            ProntuarioController controller = loader.getController();
+            if (controller != null) {
+                controller.setPacienteId(PacienteId);
+            }
+
+            AnchorPane.setTopAnchor(novaTela, 0.0);
+            AnchorPane.setBottomAnchor(novaTela, 0.0);
+            AnchorPane.setLeftAnchor(novaTela, 0.0);
+            AnchorPane.setRightAnchor(novaTela, 0.0);
+
+            conteudoCentral.getChildren().clear();
+            conteudoCentral.getChildren().add(novaTela);
+            lblPage.setText("Pacientes / Registar consulta");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("ERRO GRAVE: Não foi possível carregar a tela de prontuario.");
+        }
+    }
+
     public void abrirTelaEditarMedico(int medicoId) {
         try {
             java.net.URL fxmlUrl = getClass().getResource("/EditarMedico.fxml");
@@ -251,6 +283,7 @@ public class PaginaPrincipalController {
             System.err.println("ERRO GRAVE: Não foi possível carregar a tela de edição.");
         }
     }
+
 
     @FXML
     private void sair(ActionEvent event) {
