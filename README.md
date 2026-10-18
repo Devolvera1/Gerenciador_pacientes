@@ -1,4 +1,3 @@
-[README_Heal_Healthcare.md](https://github.com/user-attachments/files/33616722/README_Heal_Healthcare.md)
 <div align="center">
 
 # 🏥 Heal Healthcare
@@ -225,6 +224,20 @@ O material do projeto informa os seguintes usuários de demonstração:
 | Médico | `dr.roberto` | `123` |
 
 > **Importante:** essas credenciais são apenas para testes acadêmicos, caso ainda estejam cadastradas no banco inicial. Altere-as antes de qualquer uso real. Não utilize essas senhas em ambientes públicos ou de produção.
+
+## Fotos
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/32556c99-6160-493d-8947-c3e24d202a8d" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/e33c3574-6218-4301-b7f1-50d31fe5ef21" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/18b1c96e-ff05-4480-9477-b576ce748360" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/d2e9931f-f188-4b4e-87c1-c2a3b117124f" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/c89b9155-41e9-479e-8f99-e01a88418a93" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/ba1e0dee-7e0c-471e-a3c1-b36b72077baa" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/7328a8e9-f372-469c-aaa0-dc72a5b10c1e" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/56022819-7190-4542-839e-7a90ad0c491b" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/abe564e4-8682-4468-82b8-39c48c8b2990" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/fb8b6010-ffa4-43b8-83a4-39fefd6fbc1c" />
+<img width="1366" height="720" alt="image" src="https://github.com/user-attachments/assets/8b0f8249-f59a-4e59-9b8d-7aa74f2933b6" />
+<img width="362" height="382" alt="image" src="https://github.com/user-attachments/assets/22d6c3ee-325f-44f0-b2d2-7ecbdffcd45e" />
 
 ## 🎓 Contexto acadêmico
 
