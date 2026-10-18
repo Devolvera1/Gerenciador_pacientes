@@ -14,7 +14,7 @@ public class DatabaseConnection {
 
     private static final Logger LOGGER = Logger.getLogger(DatabaseConnection.class.getName());
 
-    private static final String URL = "jdbc:mysql://192.168.68.110:3306/clinica_medica";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/clinica_medica";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
