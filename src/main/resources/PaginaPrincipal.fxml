@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -12,7 +15,7 @@
 
 <AnchorPane prefHeight="703.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistema_gestao_pacientes.Pagina_principal.PaginaPrincipalController">
    <children>
-      <AnchorPane prefHeight="703.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane prefWidth="224.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #225F9E; -fx-background-radius: 4;">
                <children>
@@ -39,132 +42,128 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <VBox layoutX="14.0" layoutY="179.0" prefHeight="242.0" prefWidth="192.0" spacing="6.0">
+            <VBox layoutX="14.0" layoutY="179.0" prefHeight="242.0" prefWidth="192.0" spacing="6.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="179.0">
                <children>
-                  
                   <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirDashboard" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Dashboard" textFill="#233449">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                     <font><Font size="14.0" /></font>
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/dashboard.png" />
-                           </image>
+                           <image><Image url="@imagens/dashboard.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
-
                   <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirPacientes" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Pacientes" textFill="#233449">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                     <font><Font size="14.0" /></font>
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/users.png" />
-                           </image>
+                           <image><Image url="@imagens/users.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
-
                   <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirMedicos" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Médicos" textFill="#233449">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                     <font><Font size="14.0" /></font>
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/med.png" />
-                           </image>
+                           <image><Image url="@imagens/med.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
-
                   <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirAgenda" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Agenda" textFill="#233449">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                     <font><Font size="14.0" /></font>
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/calendario.png" />
-                           </image>
+                           <image><Image url="@imagens/calendario.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
-
                   <Button alignment="BASELINE_LEFT" disable="true" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirPendencias" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Pendências clínicas" textFill="#233449">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                     <font><Font size="14.0" /></font>
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/clipboard.png" />
-                           </image>
+                           <image><Image url="@imagens/clipboard.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
-
                </children>
             </VBox>
-            <VBox layoutX="16.0" layoutY="553.0" prefHeight="95.0" prefWidth="192.0" spacing="6.0">
+            <VBox prefWidth="192.0" spacing="6.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
                <children>
                   <Button fx:id="btnAjuda" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Ajuda" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Ajuda e suporte" textFill="#233449">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/help.png" />
-                           </image>
+                           <image><Image url="@imagens/help.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#sair" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Terminar sessão" textFill="#233449">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@imagens/exit.png" />
-                           </image>
+                           <image><Image url="@imagens/exit.png" /></image>
                         </ImageView>
                      </graphic>
                   </Button>
                </children>
             </VBox>
-            <Text fill="#23765e" layoutX="50.0" layoutY="674.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ligação segura · TLS">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="26.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imagens/security.png" />
-               </image>
-            </ImageView>
+            <HBox alignment="CENTER_LEFT" spacing="6.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="26.0">
+               <children>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagens/security.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#23765e" strokeType="OUTSIDE" strokeWidth="0.0" text="Ligação segura · TLS">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="224.0" prefHeight="66.0" prefWidth="1148.0" style="-fx-background-color: #FFFFFF;">
+      <HBox alignment="CENTER_LEFT" prefHeight="66.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets left="28.0" right="28.0" />
+         </padding>
          <children>
-            <Text fx:id="lblPage" fill="#6d7c8e" layoutX="28.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de trabalho  /  Dashboard" />
-            <Text fx:id="lblData" fill="#6d7c8e" layoutX="770.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex., 9 outubro 2026" />
-            <Text fx:id="lblMedico" fill="#233449" layoutX="1009.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" wrappingWidth="124.0751953125" />
-            <Text fx:id="lblPerfil" fill="#6d7c8e" layoutX="1009.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Médica · Administradora" wrappingWidth="124.0751953125">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Text>
-            <AnchorPane layoutX="968.0" layoutY="17.0" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 15;">
+            <Text fx:id="lblPage" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de trabalho  /  Dashboard" />
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Text fx:id="txtinciais" layoutX="9.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="26.0" />
+                  <Text fx:id="lblData" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex., 9 outubro 2026" />
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagens/bell.png" />
+                     </image>
+                  </ImageView>
+                  <Line endY="20.0" stroke="#d3d3d3" />
+                  <VBox prefHeight="66.0" prefWidth="29.0">
+                     <children>
+                        <Region prefHeight="18.0" prefWidth="32.0" />
+                        <AnchorPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #EAF2FB; -fx-background-radius: 15;">
+                           <children>
+                              <Text fx:id="txtinciais" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SC" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="32.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="32.0">
+                           <children>
+                              <Text fx:id="lblMedico" fill="#233449" strokeType="OUTSIDE" strokeWidth="0.0" text="Dra. Sofia Costa" />
+                              <Text fx:id="lblPerfil" fill="#6d7c8e" strokeType="OUTSIDE" strokeWidth="0.0" text="Médica · Administradora">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
-            </AnchorPane>
-            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="940.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imagens/bell.png" />
-               </image>
-            </ImageView>
-            <Line endX="-100.0" endY="35.0" layoutX="1013.0" layoutY="17.0" startX="-100.0" />
-         </children></AnchorPane>
-      <AnchorPane fx:id="conteudoCentral" layoutX="224.0" layoutY="66.0" prefHeight="616.0" prefWidth="1148.0" />
+            </HBox>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="conteudoCentral" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0" />
    </children>
 </AnchorPane>
