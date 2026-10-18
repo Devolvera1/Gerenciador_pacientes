@@ -94,7 +94,7 @@
                      </graphic>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirPendencias" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Pendências clínicas" textFill="#233449">
+                  <Button alignment="BASELINE_LEFT" disable="true" graphicTextGap="12.0" mnemonicParsing="false" onAction="#abrirPendencias" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Pendências clínicas" textFill="#233449">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -111,7 +111,7 @@
             </VBox>
             <VBox layoutX="16.0" layoutY="553.0" prefHeight="95.0" prefWidth="192.0" spacing="6.0">
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Ajuda e suporte" textFill="#233449">
+                  <Button fx:id="btnAjuda" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Ajuda" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="44.0" prefWidth="192.0" style="-fx-background-color: #FFFFFF;" text="Ajuda e suporte" textFill="#233449">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>

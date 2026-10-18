@@ -30,6 +30,7 @@ CREATE TABLE medicos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(250) NOT NULL,
     crm VARCHAR(20) NOT NULL UNIQUE,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     telefone VARCHAR(20) NOT NULL,
     especialidade_id INT NOT NULL,
@@ -105,15 +106,15 @@ INSERT INTO especialidades (nome, descricao) VALUES
 ('Neurologia', 'Diagnóstico e tratamento de distúrbios do sistema nervoso'),
 ('Ginecologia', 'Saúde do sistema reprodutor feminino e mamas');
 
-INSERT INTO medicos (nome, crm, email, telefone, especialidade_id, sala, ativo) VALUES
-('Dr. Roberto Alves', 'CRM-12345', 'roberto.alves@clinica.com', '11999991111', 1, 'Consultório 01', TRUE),
-('Dra. Fernanda Lima', 'CRM-54321', 'fernanda.lima@clinica.com', '11988882222', 2, 'Consultório 02', TRUE),
-('Dr. Carlos Mendes', 'CRM-98765', 'carlos.mendes@clinica.com', '11977773333', 3, 'Consultório 03', TRUE),
-('Dra. Juliana Silva', 'CRM-56789', 'juliana.silva@clinica.com', '11966664444', 4, 'Consultório 04', TRUE),
-('Dr. Marcos Vinicius', 'CRM-43210', 'marcos.vinicius@clinica.com', '11955555555', 5, 'Consultório 05', TRUE),
-('Dra. Patricia Rocha', 'CRM-67890', 'patricia.rocha@clinica.com', '11944446666', 6, 'Consultório 06', TRUE),
-('Dr. Eduardo Souza', 'CRM-11223', 'eduardo.souza@clinica.com', '11933337777', 7, 'Consultório 07', TRUE),
-('Dra. Camila Ribeiro', 'CRM-44556', 'camila.ribeiro@clinica.com', '11922228888', 8, 'Consultório 08', TRUE);
+INSERT INTO medicos (nome, crm, cpf, email, telefone, especialidade_id, sala, ativo) VALUES
+('Dr. Roberto Alves', 'CRM-12345', '11122233344', 'roberto.alves@clinica.com', '11999991111', 1, 'Consultório 01', TRUE),
+('Dra. Fernanda Lima', 'CRM-54321', '22233344455', 'fernanda.lima@clinica.com', '11988882222', 2, 'Consultório 02', TRUE),
+('Dr. Carlos Mendes', 'CRM-98765', '33344455666', 'carlos.mendes@clinica.com', '11977773333', 3, 'Consultório 03', TRUE),
+('Dra. Juliana Silva', 'CRM-56789', '44455666777', 'juliana.silva@clinica.com', '11966664444', 4, 'Consultório 04', TRUE),
+('Dr. Marcos Vinicius', 'CRM-43210', '55666777888', 'marcos.vinicius@clinica.com', '11955555555', 5, 'Consultório 05', TRUE),
+('Dra. Patricia Rocha', 'CRM-67890', '66777888999', 'patricia.rocha@clinica.com', '11944446666', 6, 'Consultório 06', TRUE),
+('Dr. Eduardo Souza', 'CRM-11223', '77888999000', 'eduardo.souza@clinica.com', '11933337777', 7, 'Consultório 07', TRUE),
+('Dra. Camila Ribeiro', 'CRM-44556', '88999000111', 'camila.ribeiro@clinica.com', '11922228888', 8, 'Consultório 08', TRUE);
 
 INSERT INTO pacientes (
     nome, cpf, email, telefone, data_nascimento, numero_utente, nome_responsavel, alergias, medicacao_habitual, data_cadastro

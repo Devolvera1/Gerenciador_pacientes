@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -169,10 +170,6 @@ public class PaginaPrincipalController {
         carregarTela("Agenda.fxml", "Agenda");
     }
 
-    @FXML
-    public void abrirPendencias(ActionEvent event) {
-        carregarTela("PendenciasMedicas.fxml", "PendenciasMedicas");
-    }
 
     @FXML
     private void onMouseEntered(MouseEvent event) {
@@ -355,4 +352,34 @@ public class PaginaPrincipalController {
             System.err.println("Erro ao tentar voltar para a tela de Login.");
         }
     }
+    @FXML
+    private void Ajuda(ActionEvent event) {
+        String conteudo = "INTEGRANTES:\n"
+                + "• Breno Ramos dos Santos (RA: 823159781)\n"
+                + "• Guilherme dos Santos Coelho (RA: 823120490)\n"
+                + "• Guilherme Feitosa Santana (RA: 823111787)\n"
+                + "• Victor Henrique da Silva Perillo Brasil (RA: 823130525)\n\n"
+                + "https://github.com/Devolvera1/Gerenciador_pacientes\n\n"
+                + "Este projeto integra os requisitos de avaliação da Unidade Curricular (UC) de Modelagem de Software da Universidade São Judas Tadeu\n\n"
+                + "© 2026 Todos os direitos reservados.";
+
+        exibirAlerta("Sobre o Projeto", conteudo, Alert.AlertType.INFORMATION);
+    }
+    private void exibirAlerta(String t, String m, Alert.AlertType tipo) {
+        Alert a = new Alert(tipo); a.setTitle(t); a.setContentText(m); a.showAndWait();
+    }
+
+
+    @FXML
+    private void abrirPendencias(ActionEvent event) {
+        String conteudo = "Tela em Desenvolvimento:\n"
+                + "Acompanhe no GitHub para futuras atualizações\n\n"
+                + "https://github.com/Devolvera1/Gerenciador_pacientes\n\n"
+                + "Este projeto integra os requisitos de avaliação da Unidade Curricular (UC) de Modelagem de Software da Universidade São Judas Tadeu\n\n"
+                + "© 2026 Todos os direitos reservados.";
+
+        exibirAlerta("Sobre o Projeto", conteudo, Alert.AlertType.INFORMATION);
+    }
+
+
 }

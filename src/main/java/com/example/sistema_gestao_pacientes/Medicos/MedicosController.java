@@ -84,6 +84,7 @@ public class MedicosController {
             private final HBox pane = new HBox(8, btnEditar, btnApagar);
 
             {
+
                 btnEditar.setStyle("-fx-background-color: #225F9E; -fx-text-fill: white; -fx-cursor: hand; -fx-font-size: 11px; -fx-background-radius: 4;");
                 btnApagar.setStyle("-fx-background-color: #EF4444; -fx-text-fill: white; -fx-cursor: hand; -fx-font-size: 11px; -fx-background-radius: 4;");
 
